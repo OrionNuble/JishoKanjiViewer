@@ -16,48 +16,16 @@ function GetCookie(){
 
   let Cookie = document.cookie;
 
-  console.log("Cookie from document.cookie: " + Cookie);
-
   let CookiesArray = Cookie.split(";");
-
-  console.log("Cookie Array returned from Cookie.split(';'): " + CookiesArray);
 
   let ReadCookie = "";
 
-  console.log("Update Anchor_Round6");
+  let ReadCookieArray = CookiesArray[0];
+  ReadCookie = ReadCookieArray.split("=")[1];
 
-  console.log(typeof("0"));
-  console.log(typeof('0'));
-
-  for (let i = 0; i < CookiesArray.length; i++){
-
-    console.log("Cookies Array's " + i + "th element: " + CookiesArray[i]);
-    console.log("Cookies Array's " + i + "th element's index [0]: " + CookiesArray[i].split("=")[0]);
-    console.log("Type of the variable above: " + typeof(CookiesArray[i].split("=")[1]));
-
-    if(!AreEquals(CookiesArray[i].split("=")[0], "0")){
-
-      ReadCookie = CookiesArray[1].split("=")[1];
-      console.log("Supposed ReadCookie: " + ReadCookie);
-      //break;
-
-    }
-
-  }
+  console.log("Supposed Cookie: " + ReadCookie);
 
   return ReadCookie;
-
-}
-
-function AreEquals(One, Two){
-
-  if (One == Two){
-
-    return true;
-
-  }
-  console.log("It fucking isnt");
-  return false;
 
 }
 
