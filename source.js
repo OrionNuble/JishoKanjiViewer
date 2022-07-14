@@ -372,7 +372,11 @@ function LoadBookmarkedKanjis(){
 
   // Read Cookie and have the string
 
+  console.log("GC at the beginning of LoadBookmarkedKanjis(): " + GrandCookieString);
+
   GrandCookieString = GetCookie();
+
+  console.log("GC after the GetCookie function returned in LoadBookmarkedKanjis() [Supposed to be updated]: " + GrandCookieString);
 
   CookieParsedData = ParseCookieString(GrandCookieString);
 
@@ -419,6 +423,7 @@ function ManageBookmarksLive(){
 
 function WriteBookmarkAsCookie() {
 
+  console.log("GC at the beginning of WriteBookmarkAsCookie(): " + GrandCookieString);
 
   let CookieName = "0";
 
@@ -426,9 +431,11 @@ function WriteBookmarkAsCookie() {
 
   GrandCookieString += NewCookieValue;
 
-  console.log("Grandcookie String: " + GrandCookieString);
+  console.log("GC after the addition of the new Cookie in WriteBookmarkAsCookie(): " + GrandCookieString);
 
   SetCookie(GrandCookieString, 3650);
+
+  console.log("GC after the SetCookie function returned in WriteBookmarkAsCookie(): " + GrandCookieString);
 
   LoadBookmarkedKanjis();
 
