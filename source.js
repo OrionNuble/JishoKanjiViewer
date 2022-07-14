@@ -538,7 +538,7 @@ function DeleteBookmark(){
 
   for(let p = 0; p < BookmarkedKanjiGradeANDIndex.length; p++){
 
-      if(BookmarkedKanjiGradeANDIndex[p][0] != CurrentKanjiDataPair[0] && BookmarkedKanjiGradeANDIndex[p][1] != CurrentKanjiDataPair[1]){
+      if(BookmarkedKanjiGradeANDIndex[p][0] != CurrentKanjiDataPair[0] || BookmarkedKanjiGradeANDIndex[p][1] != CurrentKanjiDataPair[1]){
 
         BookmarkedKanjisEdited.push(BookmarkedKanjiGradeANDIndex[p]);
 
