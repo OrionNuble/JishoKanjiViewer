@@ -536,23 +536,29 @@ function DeleteBookmark(){
 
   let CurrentKanjiDataPair = [CurrentKanjiGrade, CurrentKanjiPageIndex];
 
-  for(let p = 0; p < BookmarkedKanjiGradeANDIndex.length; p++){
+  if(ArrayHasArray(CurrentKanjiDataPair, BookmarkedKanjiGradeANDIndex)){
 
-    if(ArrayHasArray(CurrentKanjiDataPair, BookmarkedKanjiGradeANDIndex)){
+    for(let v = 0; v < BookmarkedKanjiGradeANDIndex.length; v++){
 
-      for(let v = 0; v < BookmarkedKanjiGradeANDIndex.length; v++){
+      if(v != p){
 
-        if(v != p){
-
-          BookmarkedKanjisEdited.push(BookmarkedKanjiGradeANDIndex[v]);
-
-        }
+        BookmarkedKanjisEdited.push(BookmarkedKanjiGradeANDIndex[v]);
 
       }
 
     }
 
-    break;
+  }
+
+
+  for(let p = 0; p < BookmarkedKanjiGradeANDIndex.length; p++){
+
+      if(BookmarkedKanjiGradeANDIndex[p][0] != CurrentKanjiDataPair[0] && BookmarkedKanjiGradeANDIndex[p][1] != CurrentKanjiDataPair[1]){
+
+        BookmarkedKanjisEdited.push(BookmarkedKanjiGradeANDIndex[p]);
+        break;
+
+      }
 
   }
 
