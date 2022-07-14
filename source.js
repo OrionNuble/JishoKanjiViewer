@@ -33,13 +33,13 @@ function GetCookie(){
 
     console.log("Cookies Array's " + i + "th element: " + CookiesArray[i]);
     console.log("Cookies Array's " + i + "th element's index [0]: " + CookiesArray[i].split("=")[0]);
-    console.log("Type of the variable above: " + typeof(CookiesArray[i].split("=")[0]));
+    console.log("Type of the variable above: " + typeof(CookiesArray[i].split("=")[1]));
 
-    if(AreEquals(CookiesArray[i].split("=")[0], "0")){
+    if(!AreEquals(CookiesArray[i].split("=")[0], "0")){
 
       ReadCookie = CookiesArray[i].split("=")[1];
       console.log("Supposed ReadCookie: " + ReadCookie);
-      break;
+      //break;
 
     }
 
@@ -56,7 +56,7 @@ function AreEquals(One, Two){
     return true;
 
   }
-
+  console.log("It fucking isnt");
   return false;
 
 }
