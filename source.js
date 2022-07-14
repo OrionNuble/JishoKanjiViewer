@@ -556,7 +556,11 @@ function DeleteBookmark(){
 
   }
 
+  console.log("Before Removal: " + BookmarkedKanjiGradeANDIndex);
+
   BookmarkedKanjiGradeANDIndex = BookmarkedKanjisEdited;
+
+  console.log("After Removal: " + BookmarkedKanjiGradeANDIndex);
 
   GrandCookieString = DeparseArrayIntoCookieString();
 
