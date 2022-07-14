@@ -339,7 +339,11 @@ function LoadChecks(){
 
   let CurrentPair = [CurrentKanjiGrade, CurrentKanjiPageIndex];
 
+  console.log("Current Grade-Index Pair: " + CurrentPair);
+
   for (let u = 0; u < BookmarkedKanjiGradeANDIndex.length; u++){
+
+    console.log("Current BookmarkedKanjiGradeIndex[u]'th value: " + BookmarkedKanjiGradeANDIndex[u]);
 
     if(isInBookmarksArray(CurrentPair, BookmarkedKanjiGradeANDIndex)){
 
