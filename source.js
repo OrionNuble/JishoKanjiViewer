@@ -37,7 +37,7 @@ function GetCookie(){
 
     if(!AreEquals(CookiesArray[i].split("=")[0], "0")){
 
-      ReadCookie = CookiesArray[i].split("=")[1];
+      ReadCookie = CookiesArray[1].split("=")[1];
       console.log("Supposed ReadCookie: " + ReadCookie);
       //break;
 
