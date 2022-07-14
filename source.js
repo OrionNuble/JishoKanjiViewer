@@ -35,7 +35,7 @@ function GetCookie(){
     console.log("Cookies Array's " + i + "th element's index [0]: " + CookiesArray[i].split("=")[0]);
     console.log("Type of the variable above: " + typeof(CookiesArray[i].split("=")[0]));
 
-    if(CookiesArray[i].split("=")[0].toString() == '0'){
+    if(AreEquals(CookiesArray[i].split("=")[0], "0")){
 
       ReadCookie = CookiesArray[i].split("=")[1];
       console.log("Supposed ReadCookie: " + ReadCookie);
@@ -46,6 +46,18 @@ function GetCookie(){
   }
 
   return ReadCookie;
+
+}
+
+function AreEquals(One, Two){
+
+  if (One == Two){
+
+    return true;
+
+  }
+
+  return false;
 
 }
 
