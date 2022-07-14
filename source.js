@@ -24,7 +24,7 @@ function GetCookie(){
 
   let ReadCookie = "";
 
-  console.log("Update Anchor_Round3");
+  console.log("Update Anchor_Round4");
 
   for (let i = 0; i < CookiesArray.length; i++){
 
