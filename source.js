@@ -1,31 +1,20 @@
-class Cookies{
+SetCookie(Value, ExpiryInDays){
 
-  constructor(CookieName){
+  let defName = "0";
 
-    this.CookieName = CookieName;
+  let DateObj = new Date();
 
-  }
+  let ExpiryDate = DateObj.setTime(DateObj.getTime() + (ExpiryInDays * 24 * 60 * 60))
 
-  defName = "0";
+  document.cookie = defName + "=" + Value + "; expires=" + ExpiryDate.toUTCString();
 
-  SetCookie(Value, ExpiryInDays){
+}
 
-    DateObj = new Date();
+GetCookie(){
 
-    ExpiryDate = DateObj.setTime(DateObj.getTime() + (ExpiryInDays * 24 * 60 * 60))
+  let Cookie = document.cookie;
 
-    document.cookie = this.defName + "=" + Value + "; expires=" + ExpiryDate.toUTCString();
-
-  }
-
-  GetCookie(){
-
-    Cookie = document.cookie;
-
-    return Cookie;
-
-  }
-
+  return Cookie;
 
 }
 
@@ -347,7 +336,7 @@ function LoadBookmarkedKanjis(){
 
   // Read Cookie and have the string
 
-  GrandCookieString = Cookies.GetCookie();
+  GrandCookieString = GetCookie();
 
   CookieParsedData = ParseCookieString(GrandCookieString);
 
@@ -399,7 +388,7 @@ function WriteBookmarkAsCookie() {
 
   GrandCookieString += NewCookieValue;
 
-  Cookies.SetCookie(GrandCookieString, 3650);
+  SetCookie(GrandCookieString, 3650);
 
   LoadBookmarkedKanjis();
 
@@ -473,7 +462,7 @@ function DeleteBookmark(){
 
   GrandCookieString = DeparseArrayIntoCookieString();
 
-  Cookies.SetCookie(GrandCookieString, 3650);
+  SetCookie(GrandCookieString, 3650);
 
   LoadBookmarkedKanjis();
 
