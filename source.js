@@ -341,6 +341,25 @@ function ParseCookieString(CookieString){
 
 }
 
+function LoadChecks(){
+
+  let CurrentPair = [CurrentKanjiGrade, CurrentKanjiPageIndex];
+
+  for (let u = 0; u < BookmarkedKanjiGradeANDIndex.length; u++){
+
+    if(isInBookmarksArray(CurrentPair, BookmarkedKanjiGradeANDIndex)){
+
+      document.getElementById("Bookmarked").checked = true;
+      break;
+
+    }
+
+  }
+
+  document.getElementById("Bookmarked").checked = false;
+
+}
+
 function LoadBookmarkedKanjis(){
 
   let KanjiDataPair = [];
@@ -372,6 +391,8 @@ function LoadBookmarkedKanjis(){
   }
 
   console.log(BookmarkedKanjiGradeANDIndex);
+
+  LoadChecks();
 
   // Use the data to load bookmarks selection
 
