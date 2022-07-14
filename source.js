@@ -339,6 +339,19 @@ function LoadChecks(){
 
   let CurrentPair = [CurrentKanjiGrade, CurrentKanjiPageIndex];
 
+  if(isInBookmarksArray()){
+
+    document.getElementById("Bookmarked").checked = true;
+
+  }
+
+  else{
+
+    document.getElementById("Bookmarked").checked = false;
+
+  }
+
+  /*
   console.log("Current Grade-Index Pair: " + CurrentPair);
 
   for (let u = 0; u < BookmarkedKanjiGradeANDIndex.length; u++){
@@ -354,7 +367,7 @@ function LoadChecks(){
 
   }
 
-  document.getElementById("Bookmarked").checked = false;
+  document.getElementById("Bookmarked").checked = false;*/
 
 }
 
@@ -405,6 +418,7 @@ let ChosenBookmarkedKanjiPosCode = CurrentKanjiGrade.toString() + CurrentKanjiPa
 function ManageBookmarksLive(){
 
   let Check = document.getElementById('Bookmarked').checked;
+  console.log("Checked: " + Check);
 
   if(Check){
 
@@ -421,17 +435,19 @@ function ManageBookmarksLive(){
 
 function WriteBookmarkAsCookie() {
 
-  console.log("GC at the beginning of WriteBookmarkAsCookie(): " + GrandCookieString);
+  if(!isInBookmarksArray()){
 
-  let NewCookieValue = CurrentKanjiGrade.toString() + CurrentKanjiPageIndex.toString().length.toString() + CurrentKanjiPageIndex.toString();
+    let NewCookieValue = CurrentKanjiGrade.toString() + CurrentKanjiPageIndex.toString().length.toString() + CurrentKanjiPageIndex.toString();
 
-  GrandCookieString = GetCookie();
+    GrandCookieString = GetCookie();
 
-  GrandCookieString += NewCookieValue;
+    GrandCookieString += NewCookieValue;
 
-  SetCookie(GrandCookieString, 3650);
+    SetCookie(GrandCookieString, 3650);
 
-  LoadBookmarkedKanjis();
+    LoadBookmarkedKanjis();
+
+  }
 
 }
 
