@@ -31,7 +31,7 @@ function GetCookie(){
     console.log("Cookies Array's " + i + "th element: " + CookiesArray[i]);
     console.log("Cookies Array's " + i + "th element's index [0]: " + CookiesArray[i].split("=")[0]);
 
-    if(CookiesArray[i].split("=")[0].toString() == "0"){
+    if(CookiesArray[i].split("=")[0].toString() == '0'){
 
       ReadCookie = CookiesArray[i].split("=")[1];
       console.log("Supposed ReadCookie: " + ReadCookie);
