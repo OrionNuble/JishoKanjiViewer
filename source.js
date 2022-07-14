@@ -24,11 +24,12 @@ function GetCookie(){
 
   let ReadCookie = "";
 
-  console.log("Update Anchor");
+  console.log("Update Anchor_Round2");
 
   for (let i = 0; i < CookiesArray.length; i++){
 
     console.log("Cookies Array's " + i + "th element: " + CookiesArray[i]);
+    console.log("Cookies Array's " + i + "th element's index [0]: " + CookiesArray[i].split("=")[0]);
 
     if(CookiesArray[i].split("=")[0] == "0"){
 
