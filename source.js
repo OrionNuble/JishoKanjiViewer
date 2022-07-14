@@ -4,9 +4,11 @@ function SetCookie(Value, ExpiryInDays){
 
   let DateObj = new Date();
 
-  let ExpiryDate = DateObj.setTime(DateObj.getTime() + (ExpiryInDays * 24 * 60 * 60))
+  DateObj.setTime(DateObj.getTime() + (ExpiryInDays * 24 * 60 * 60));
 
-  document.cookie = defName + "=" + Value + "; expires=" + ExpiryDate.toUTCString();
+  let ExpiryDate = "; expires=" + DateObj.toUTCString();
+
+  document.cookie = defName + "=" + Value + ExpiryDate;
 
 }
 
