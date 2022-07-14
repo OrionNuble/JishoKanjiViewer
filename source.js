@@ -1,4 +1,4 @@
-SetCookie(Value, ExpiryInDays){
+function SetCookie(Value, ExpiryInDays){
 
   let defName = "0";
 
@@ -10,11 +10,26 @@ SetCookie(Value, ExpiryInDays){
 
 }
 
-GetCookie(){
+function GetCookie(){
 
   let Cookie = document.cookie;
 
-  return Cookie;
+  let CookiesArray = Cookie.split(";");
+
+  let ReadCookie = "";
+
+  for (let i = 0; i < CookiesArray.length; i++){
+
+    if(CookiesArray[i][0] == "0"){
+
+      ReadCookie = CookiesArray[i].split("=")[1];
+      break;
+
+    }
+
+  }
+
+  return ReadCookie;
 
 }
 
