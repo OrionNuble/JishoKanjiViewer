@@ -12,20 +12,43 @@ function SetCookie(Value, ExpiryInDays){
 
 }
 
-function GetCookie(){
+function GetCookie(Check){
 
   let Cookie = document.cookie;
 
   let CookiesArray = Cookie.split(";");
 
+  let ReadCookieArray = CookiesArray[0];
+
   let ReadCookie = "";
 
-  let ReadCookieArray = CookiesArray[0];
-  ReadCookie = ReadCookieArray.split("=")[1];
+  if(!Check){
 
-  console.log("Supposed Cookie: " + ReadCookie);
 
-  return ReadCookie;
+    ReadCookie = ReadCookieArray.split("=")[1];
+
+    console.log("Supposed Cookie: " + ReadCookie);
+
+    return ReadCookie;
+
+  }
+
+  else{
+
+    ReadCookie = ReadCookieArray.split("=")[0];
+
+    if(ReadCookie == "0"){
+
+      return true;
+
+    }
+    else{
+
+      return false;
+
+    }
+
+  }
 
 }
 
@@ -435,17 +458,35 @@ function ManageBookmarksLive(){
 
 function WriteBookmarkAsCookie() {
 
+  let CookieCheck = false;
+
   if(!isInBookmarksArray()){
+
+    CookieCheck = GetCookie(true);
 
     let NewCookieValue = CurrentKanjiGrade.toString() + CurrentKanjiPageIndex.toString().length.toString() + CurrentKanjiPageIndex.toString();
 
-    GrandCookieString = GetCookie();
+    if(CookieCheck){
 
-    GrandCookieString += NewCookieValue;
+      GrandCookieString = GetCookie(false);
 
-    SetCookie(GrandCookieString, 3650);
+      GrandCookieString += NewCookieValue;
 
-    LoadBookmarkedKanjis();
+      SetCookie(GrandCookieString, 3650);
+
+      LoadBookmarkedKanjis();
+
+    }
+
+    else{
+
+      GrandCookieString += NewCookieValue;
+
+      SetCookie(GrandCookieString, 3650);
+
+      LoadBookmarkedKanjis();
+
+    }
 
   }
 
