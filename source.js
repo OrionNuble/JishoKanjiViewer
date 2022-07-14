@@ -541,7 +541,6 @@ function DeleteBookmark(){
       if(BookmarkedKanjiGradeANDIndex[p][0] != CurrentKanjiDataPair[0] && BookmarkedKanjiGradeANDIndex[p][1] != CurrentKanjiDataPair[1]){
 
         BookmarkedKanjisEdited.push(BookmarkedKanjiGradeANDIndex[p]);
-        break;
 
       }
 
