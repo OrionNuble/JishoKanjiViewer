@@ -405,6 +405,8 @@ function WriteBookmarkAsCookie() {
 
   GrandCookieString += NewCookieValue;
 
+  console.log("Grandcookie String: " + GrandCookieString);
+
   SetCookie(GrandCookieString, 3650);
 
   LoadBookmarkedKanjis();
