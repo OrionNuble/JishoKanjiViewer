@@ -372,7 +372,7 @@ function LoadBookmarkedKanjis(){
 
   console.log("GC at the beginning of LoadBookmarkedKanjis(): " + GrandCookieString);
 
-  GrandCookieString = GetCookie();
+  //GrandCookieString = GetCookie();
 
   console.log("GC after the GetCookie function returned in LoadBookmarkedKanjis() [Supposed to be updated]: " + GrandCookieString);
 
@@ -423,17 +423,13 @@ function WriteBookmarkAsCookie() {
 
   console.log("GC at the beginning of WriteBookmarkAsCookie(): " + GrandCookieString);
 
-  let CookieName = "0";
-
   let NewCookieValue = CurrentKanjiGrade.toString() + CurrentKanjiPageIndex.toString().length.toString() + CurrentKanjiPageIndex.toString();
+
+  GrandCookieString = GetCookie();
 
   GrandCookieString += NewCookieValue;
 
-  console.log("GC after the addition of the new Cookie in WriteBookmarkAsCookie(): " + GrandCookieString);
-
   SetCookie(GrandCookieString, 3650);
-
-  console.log("GC after the SetCookie function returned in WriteBookmarkAsCookie(): " + GrandCookieString);
 
   LoadBookmarkedKanjis();
 
