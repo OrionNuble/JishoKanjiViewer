@@ -568,10 +568,14 @@ function UpdateBookmarksList(){
 
     SingleKanjiOption += BookmarkedKanjiGradeANDIndex[ind][0].toString() + "," + BookmarkedKanjiGradeANDIndex[ind][0].toString();
 
+    console.log("Current Option: " + SingleKanjiOption + "|| It's type is: " + typeof(SingleKanjiOption));
+
     KanjiOptions.push(SingleKanjiOption);
     SingleKanjiOption = "";
 
   }
+
+  console.log("KanjiOptions: " + KanjiOptions);
 
   for(let KanjiOption in KanjiOptions){
 
