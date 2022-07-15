@@ -198,18 +198,12 @@ function GetCookie(Check, Mode){
   let CookiesArray = [];
 
   CookiesArray = Cookie.split(";");
-  
+
   let BookmarksCookieIndex = CookieIndexThatStartsWith(CookiesArray, "B");
   let RememberenceCookieIndex = CookieIndexThatStartsWith(CookiesArray, "R");
 
-  console.log("BCI: " + BookmarksCookieIndex);
-  console.log("RCI: " + RememberenceCookieIndex);
-
   let ReadCookieArray = CookiesArray[BookmarksCookieIndex];
   let RememberenceCookieArray = CookiesArray[RememberenceCookieIndex];
-
-  console.log("CookiesArray[B]: " + ReadCookieArray);
-  console.log("CookiesArray[R]: " + RememberenceCookieArray);
 
   let ReadCookie = "";
   let ReadCookiePairArray = [];
@@ -228,11 +222,7 @@ function GetCookie(Check, Mode){
 
       ReadCookiePairArray = RememberenceCookieArray.split("=");
 
-      console.log("RememberedCookiesSplitted[Left: 1 / Right: Right[0]: Grade Right[1]: Index]: " + ReadCookiePairArray);
-
       let RememberedCookie = ReadCookiePairArray[1];
-
-      console.log("GradeAndIndexTogether: " + RememberedCookie);
 
       return RememberedCookie;
   
@@ -371,8 +361,6 @@ function GetGradeLevel(){
 
   CurrentKanjiGrade = parseInt(GradeSelect.value);
 
-  console.log("Selected Grade Text Value: " + SelectedGradeText);
-
 }
 
 function isInRangeInc(Num, Min, Max){
@@ -447,9 +435,6 @@ function ParseCookieString(CookieString){
 function LoadInitialPage(){
 
   let CurrentPageData = GetCookie(false, "WhereLeftOff");
-
-  console.log("Remembered cookie returned: " + CurrentPageData);
-  console.log("CurrentPageData type: " + typeof(CurrentPageData));
 
   CurrentKanjiGrade = parseInt(CurrentPageData[0]);
   CurrentPageData = CurrentPageData.substring(1);
@@ -643,8 +628,6 @@ function UpdateBookmarksList(){
   let BookmarkedGradeValueStr = document.getElementById("Grades").value;
   let BookmarkedKanjiSelect = document.getElementById("Kanjis");
 
-  console.log("Called");
-
   BookmarkedKanjiSelect.innerHTML = "";
 
   let BookmarkedGradeValue = parseInt(BookmarkedGradeValueStr);
@@ -653,18 +636,11 @@ function UpdateBookmarksList(){
 
   let SingleKanjiOption = "";
 
-  console.log("Array: " + BookmarkedKanjiGradeANDIndex);
-  console.log("The length of the array: " + BookmarkedKanjiGradeANDIndex.length);
-
   for(let ind = 0; ind < BookmarkedKanjiGradeANDIndex.length; ind++){
 
     if(BookmarkedKanjiGradeANDIndex[ind][0] == BookmarkedGradeValue){
 
-      console.log("Supposed to be an element of the bookmarks array: " + BookmarkedKanjiGradeANDIndex[ind]);
-
       SingleKanjiOption += BookmarkedKanjiGradeANDIndex[ind][0].toString() + "," + BookmarkedKanjiGradeANDIndex[ind][1].toString();
-
-      console.log("Current Option: " + SingleKanjiOption + "|| It's type is: " + typeof(SingleKanjiOption));
 
       KanjiOptions.push(SingleKanjiOption);
       SingleKanjiOption = "";
@@ -673,25 +649,13 @@ function UpdateBookmarksList(){
 
   }
 
-  console.log("KanjiOptions: " + KanjiOptions);
-
   for(let IND = 0; IND < KanjiOptions.length; IND++){
 
-    console.log("----------------------------------------");
-
     let OptionPair = KanjiOptions[IND].split(",");
-
-    console.log("Current Option Pair: " + OptionPair);
 
     let newBookmarkOption = document.createElement("option");
 
     let OptionValue = "";
-    
-    console.log("Value: " + OptionPair[0]);
-    console.log("Kanji Grade from the select: " + BookmarkedGradeValue);
-    console.log("Kanji index from the Bookmarks array: " + OptionPair[1]);
-    console.log("The type of OptionPair[1]: " + typeof(OptionPair[1]));
-    console.log("The Kanji at Grade,Index: " + FetchKanji(BookmarkedGradeValue, parseInt(OptionPair[1])));
 
     OptionValue = OptionPair[0] + OptionPair[1];
 
@@ -699,8 +663,6 @@ function UpdateBookmarksList(){
     newBookmarkOption.innerHTML = FetchKanji(BookmarkedGradeValue, parseInt(OptionPair[1]));
 
     BookmarkedKanjiSelect.options.add(newBookmarkOption);
-
-    console.log("----------------------------------------");
 
   }
 
