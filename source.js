@@ -586,6 +586,9 @@ function UpdateBookmarksList(){
     newBookmarkOption.value = OptionPair[0];
     newBookmarkOption.innerHTML = BookmarkedKanjiGradeANDIndex[BookmarkedGradeValue - 1][parseInt(OptionPair[1])];
 
+    console.log("Bookmarked Kanji(INNER HTML): " + newBookmarkOption.innerHTML);
+    console.log("Bookmarked Kanji(ARRAY): " + BookmarkedKanjiGradeANDIndex[BookmarkedGradeValue - 1][parseInt(OptionPair[1])]);
+
     BookmarkedKanjiSelect.options.add(newBookmarkOption);
 
   }
