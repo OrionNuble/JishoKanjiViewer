@@ -34,8 +34,8 @@ let Grade3Kanjis = GradeThree_One + GradeThree_Two;
 // Grade Four
 
 let GradeFour_One = "議連民氏選関戦最約法的要治成協機挙加続改不初結井府共軍以参利案信側得求昨官告松佐変産各票果必崎争無位置隊別付士夫特害副席残念博労例然費伝景奈辺功料養街失差建課末極種沖量望観察鹿郡紀説象達良候満敗管兵器"; // 100 (*99/Missed One)
-let GradeFour_Two = "典賀賞縄縄積徳録省熊倉唱周材健飛単試完旗潟"; // 100
-let GradeFour_Three = ""; // 25
+let GradeFour_Two = "典賀賞縄縄積徳録省熊倉唱周材健飛単試完旗潟型競験給梅働辞好史愛富英未低梨冷類児牧印標輪熱清覚岐億径芸殺陸帯努固鏡散司康静卒順滋歴巣城老令徒貨航季芽香欠底媛願希笑停束仲栄札脈節包喜折囲焼救照群便漁訓浴塩岡"; // 100
+let GradeFour_Three = "兆祝衣臣浅阪勇械刷腸貯泣孫借飯灯毒粉堂菜埼胃茨栃阜"; // 25
 
 let Grade4Kanjis = GradeFour_One + GradeFour_Two + GradeFour_Three;
 
