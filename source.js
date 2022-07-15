@@ -122,11 +122,27 @@ let PrintIndexString = "";
 
 let GrandCookieString = "";
 
+function CookieIndexThatStartsWith(Cookies, startsWith){
+
+  for(let i = 0; i < Cookies.length; i++){
+
+    if(startsWith == Cookies[i][0]){
+
+      return i;
+
+    }
+
+  }
+
+  return -1;
+
+}
+
 function SetCookie(Value, ExpiryInDays, Mode){
 
   if(Mode == "Bookmarks"){
 
-    let defName = "0";
+    let defName = "Bookmarks";
 
     let DateObj = new Date();
 
@@ -140,7 +156,7 @@ function SetCookie(Value, ExpiryInDays, Mode){
 
   else if(Mode == "WhereLeftOff"){
 
-    let defName = "1";
+    let defName = "Rememberence";
     let defGrade = CurrentKanjiGrade.toString();
     let defIndex = CurrentKanjiPageIndex.toString();
 
@@ -169,11 +185,11 @@ function GetCookie(Check, Mode){
 
   let CookiesArray = Cookie.split(";");
 
-  let ReadCookieArray = CookiesArray[0];
-  let RememberenceCookieArray = CookiesArray[1];
+  let ReadCookieArray = CookiesArray[CookieIndexThatStartsWith(CookiesArray, "B")];
+  let RememberenceCookieArray = CookiesArray[CookieIndexThatStartsWith(CookiesArray, "R")];
 
-  console.log("CookiesArray[0]: " + ReadCookieArray);
-  console.log("CookiesArray[1]: " + RememberenceCookieArray);
+  console.log("CookiesArray[B]: " + ReadCookieArray);
+  console.log("CookiesArray[R]: " + RememberenceCookieArray);
 
   let ReadCookie = "";
   let ReadCookiePairArray = [];
