@@ -24,7 +24,17 @@
     <label for="BookmarkTest"> | Bookmark This Kanji </label>
     <input type="checkbox" name="Bookmark this Kanji" value="Bookmark" id="Bookmarked", onchange="ManageBookmarksLive()">
     <label for=""> |</label>
-    <button id="Load bookmarks" onclick="LoadBookmarkedKanjis()">Load Bookmarks</button>
+    <label for=""> | </label>
+    <select name="BookmarkGradeSelect" id="Grades" onchange="UpdateBookmarksList()">
+      <option value="1">Grade One Bookmarks</option>
+      <option value="2">Grade Two Bookmarks</option>
+      <option value="3">Grade Three Bookmarks</option>
+      <option value="4">Grade Four Bookmarks</option>
+      <option value="5">Grade Five Bookmarks</option>
+      <option value="6">Grade Six Bookmarks</option>
+    </select>
+    <select name="BookmarksKanjiSelect" id="Kanjis"></select>
+    <button id="Load bookmarks" onclick="BringForthBookmarkedKanji()">Load Bookmark</button>
     <iframe src="..." frameborder = "0" allowfullscreen id="IFRAME" width="1920px" height="1080px"></iframe>
     <script type="text/javascript" src="source.js"></script>
     <link rel="stylesheet" type="text/css" href="source.css"/>
