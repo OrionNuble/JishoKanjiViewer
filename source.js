@@ -452,6 +452,8 @@ function LoadInitialPage(){
 
   document.getElementById('CIndex').innerHTML = " | Kanji No: " + PrintIndexString.toString() + " | ";
 
+  document.getElementById("GradeLevel").value = CurrentKanjiGrade.toString();
+
 }
 
 function LoadChecks(){
