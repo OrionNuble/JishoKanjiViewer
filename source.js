@@ -205,8 +205,11 @@ function GetCookie(Check, Mode){
   let ReadCookieArray = CookiesArray[BookmarksCookieIndex];
   let RememberenceCookieArray = CookiesArray[RememberenceCookieIndex];
 
-  console.log("ReadCookieArray is actually a/an: " + ReadCookieArray);
-  console.log("RememberenceCookieArray is actually a/an: " + RememberenceCookieArray);
+  console.log("ReadCookieArray is actually a/an: " + typeof(ReadCookieArray));
+  console.log("RememberenceCookieArray is actually a/an: " + typeof(RememberenceCookieArray));
+
+  console.log("ReadCookieArray: " + ReadCookieArray);
+  console.log("RememberenceCookieArray: " + RememberenceCookieArray);
 
   let ReadCookie = "";
   let ReadCookiePairArray = [];
