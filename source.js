@@ -606,3 +606,11 @@ function BringForthBookmarkedKanji(){
   FetchTheNextKanji();
 
 }
+
+function HTMLOnloadFunctions(){
+
+  LoadBookmarkedKanjis();
+
+  UpdateBookmarksList();
+
+}
