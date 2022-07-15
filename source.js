@@ -401,6 +401,8 @@ function LoadBookmarkedKanjis(){
 
   let CookieParsedData = [];
 
+  GrandCookieString = GetCookie();
+
   CookieParsedData = ParseCookieString(GrandCookieString);
 
   for(let j = 0; j < CookieParsedData.length; j++){
