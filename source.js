@@ -262,6 +262,8 @@ function isInBookmarksArray() {
 
       if(BookmarkedKanjiGradeANDIndex[x][1] == CurrentKanjiPageIndex){
 
+        console.log("It does return true");
+
         return true;
 
       }
@@ -269,6 +271,8 @@ function isInBookmarksArray() {
     }
 
   }
+
+  console.log("It does not return true");
 
   return false;
 
