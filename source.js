@@ -67,7 +67,7 @@ function GetCookie(Check, Mode){
 
       let RememberedCookie = ReadCookieArray[1];
 
-      return ReadCookiePairArray;
+      return RememberedCookie;
   
     }
     else{
