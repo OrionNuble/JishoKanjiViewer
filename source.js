@@ -130,6 +130,12 @@ function CookieIndexThatStartsWith(Cookies, startsWith){
 
   for(let i = 0; i < Cookies.length; i++){
 
+    if(Cookies[i][0] == " "){
+
+      Cookies[i]= Cookies[i].substring(1);
+
+    }
+
     CurrentCookiePair = Cookies[i].split("=");
 
     if(CurrentCookiePair[0] == startsWith){
