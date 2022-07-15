@@ -430,6 +430,12 @@ function LoadInitialPage(){
 
   let CurrentPageData = GetCookie(false, "WhereLeftOff");
 
+  if(CurrentKanjiGrade == undefined && CurrentKanjiPageIndex == undefined && AllJishoKanjiPages == undefined){
+
+    console.log("Heyoo");
+
+  }
+
   CurrentKanjiGrade = parseInt(CurrentPageData[0]);
   CurrentPageData = CurrentPageData.substring(1);
   CurrentKanjiPageIndex = parseInt(CurrentPageData);
@@ -503,15 +509,15 @@ function ManageBookmarksLive(){
   if(Check){
 
     WriteBookmarkAsCookie();
-    UpdateBookmarksList();
 
   }
   else{
 
     DeleteBookmark();
-    UpdateBookmarksList();
 
   }
+
+  UpdateBookmarksList();
 
 }
 
