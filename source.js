@@ -161,6 +161,9 @@ let KanjiPageEnding = "%20%23kanji";
 let CurrentKanjiPageIndex = 0;
 let CurrentKanjiGrade = 1;
 
+let CurrentBookmarkedKanjiPageIndex = 0;
+let CurrentBookmarkedKanjiGrade = 1;
+
 let CurrentKanji = "";
 
 CurrentKanji = KanjiPageBeginning + AllJishoKanjiPages[CurrentKanjiGrade - 1][CurrentKanjiPageIndex] + KanjiPageEnding;
@@ -536,5 +539,57 @@ function DeleteBookmark(){
   SetCookie(GrandCookieString, 3650);
 
   LoadBookmarkedKanjis();
+
+}
+
+function UpdateBookmarksList(){
+
+  let BookmarkedGradeValueStr = document.getElementById("Grades").value;
+  let BookmarkedKanjiSelect = document.getElementById("Kanjis");
+
+  BookmarkedKanjiSelect.innerHTML = "";
+
+  let BookmarkedGradeValue = parseInt(BookmarkedGradeValueStr);
+
+  let KanjiOptions = [];
+
+  let SingleKanjiOption = "";
+
+  for(let Kanji in BookmarkedKanjiGradeANDIndex){
+
+    SingleKanjiOption += Kanji[0].toString() + "," + Kanji[1].toString();
+
+    KanjiOptions.push(SingleKanjiOption);
+    SingleKanjiOption = "";
+
+  }
+
+  for(let KanjiOption in KanjiOptions){
+
+    let OptionPair = KanjiOption.split(",");
+
+    let newBookmarkOption = document.createElement("option");
+    
+    newBookmarkOption.value = OptionPair[0];
+    newBookmarkOption.innerHTML = OptionPair[1];
+
+    BookmarkedKanjiSelect.options.add(newBookmarkOption);
+
+  }
+
+}
+
+function BringForthBookmarkedKanji(){
+
+  let BookmarkedKanjiGradeSelect = document.getElementById("Grades");
+  let BookmarkedKanjiSelect = document.getElementById("Kanjis");
+
+  CurrentBookmarkedKanjiGrade = parseInt(BookmarkedKanjiGradeSelect.value);
+  CurrentBookmarkedKanjiPageIndex = parseInt(BookmarkedKanjiSelect.value);
+
+  CurrentKanjiGrade = CurrentBookmarkedKanjiGrade;
+  CurrentKanjiPageIndex = CurrentBookmarkedKanjiPageIndex - 1;
+
+  FetchTheNextKanji();
 
 }
