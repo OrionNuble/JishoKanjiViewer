@@ -560,7 +560,7 @@ function UpdateBookmarksList(){
   let SingleKanjiOption = "";
 
   console.log("Array: " + BookmarkedKanjiGradeANDIndex);
-  console.log(BookmarkedKanjiGradeANDIndex.length);
+  console.log("The length of the array: " + BookmarkedKanjiGradeANDIndex.length);
 
   for(let ind = 0; ind < BookmarkedKanjiGradeANDIndex.length; ind++){
 
