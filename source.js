@@ -275,7 +275,7 @@ function FetchTheNextKanji(){
   document.getElementById("IFRAME").src = CurrentKanji;
 
   PrintIndexString = CurrentKanjiPageIndex + 1;
-  document.getElementById('CIndex').innerHTML = "Current Index: " + PrintIndexString.toString();
+  document.getElementById('CIndex').innerHTML = "Kanji No: " + PrintIndexString.toString();
   document.getElementById('Bookmarked').checked = isInBookmarksArray();
 
   SetCookie("0", 3650, "WhereLeftOff");
@@ -301,7 +301,7 @@ function FetchThePreviousKanji(){
   document.getElementById("IFRAME").src = CurrentKanji;
 
   PrintIndexString = CurrentKanjiPageIndex + 1;
-  document.getElementById('CIndex').innerHTML = "Current Index: " + PrintIndexString.toString();
+  document.getElementById('CIndex').innerHTML = "Kanji No: " + PrintIndexString.toString();
   document.getElementById('Bookmarked').checked = isInBookmarksArray();
 
 }
@@ -429,7 +429,7 @@ function LoadInitialPage(){
 
   document.getElementById("IFRAME").src = CurrentKanji;
 
-  document.getElementById('CIndex').innerHTML = " | Current Index: " + PrintIndexString.toString() + " | ";
+  document.getElementById('CIndex').innerHTML = " | Kanji No: " + PrintIndexString.toString() + " | ";
 
 }
 
