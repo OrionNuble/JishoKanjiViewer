@@ -549,7 +549,7 @@ function UpdateBookmarksList(){
   let BookmarkedGradeValueStr = document.getElementById("Grades").value;
   let BookmarkedKanjiSelect = document.getElementById("Kanjis");
 
-  console.log("I ama hereeee");
+  console.log("Called");
 
   BookmarkedKanjiSelect.innerHTML = "";
 
@@ -563,7 +563,7 @@ function UpdateBookmarksList(){
 
   for(let ind = 0; ind < BookmarkedKanjiGradeANDIndex.length; ind++){
 
-    console.log("Supposed to be an element of the bookmarks array: " + Kanji);
+    console.log("Supposed to be an element of the bookmarks array: " + BookmarkedKanjiGradeANDIndex[ind]);
 
     SingleKanjiOption += BookmarkedKanjiGradeANDIndex[ind][0].toString() + "," + BookmarkedKanjiGradeANDIndex[ind][0].toString();
 
