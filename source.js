@@ -544,6 +544,14 @@ function DeleteBookmark(){
 
 }
 
+function FetchKanji(Grade, Index){
+
+
+  return AllJishoKanjiPages[Grade - 1][Index];
+
+
+}
+
 function UpdateBookmarksList(){
 
   let BookmarkedGradeValueStr = document.getElementById("Grades").value;
@@ -564,14 +572,18 @@ function UpdateBookmarksList(){
 
   for(let ind = 0; ind < BookmarkedKanjiGradeANDIndex.length; ind++){
 
-    console.log("Supposed to be an element of the bookmarks array: " + BookmarkedKanjiGradeANDIndex[ind]);
+    if(BookmarkedKanjiGradeANDIndex[ind][0] == BookmarkedGradeValue){
 
-    SingleKanjiOption += BookmarkedKanjiGradeANDIndex[ind][0].toString() + "," + BookmarkedKanjiGradeANDIndex[ind][1].toString();
+      console.log("Supposed to be an element of the bookmarks array: " + BookmarkedKanjiGradeANDIndex[ind]);
 
-    console.log("Current Option: " + SingleKanjiOption + "|| It's type is: " + typeof(SingleKanjiOption));
+      SingleKanjiOption += BookmarkedKanjiGradeANDIndex[ind][0].toString() + "," + BookmarkedKanjiGradeANDIndex[ind][1].toString();
 
-    KanjiOptions.push(SingleKanjiOption);
-    SingleKanjiOption = "";
+      console.log("Current Option: " + SingleKanjiOption + "|| It's type is: " + typeof(SingleKanjiOption));
+
+      KanjiOptions.push(SingleKanjiOption);
+      SingleKanjiOption = "";
+
+    }
 
   }
 
@@ -590,10 +602,11 @@ function UpdateBookmarksList(){
     console.log("Value: " + OptionPair[0]);
     console.log("Kanji Grade from the select: " + BookmarkedGradeValue);
     console.log("Kanji index from the Bookmarks array: " + OptionPair[1]);
-    console.log("The Kanji at Grade,Index: " + BookmarkedKanjiGradeANDIndex[BookmarkedGradeValue - 1][parseInt(OptionPair[1])]);
+    console.log("The type of OptionPair[1]: " + typeof(OptionPair[1]));
+    console.log("The Kanji at Grade,Index: " + FetchKanji(BookmarkedGradeValue, parseInt(OptionPair[1])));
 
     newBookmarkOption.value = OptionPair[0];
-    newBookmarkOption.innerHTML = BookmarkedKanjiGradeANDIndex[BookmarkedGradeValue - 1][parseInt(OptionPair[1])];
+    newBookmarkOption.innerHTML = FetchKanji(BookmarkedGradeValue, parseInt(OptionPair[1]));
 
     BookmarkedKanjiSelect.options.add(newBookmarkOption);
 
