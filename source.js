@@ -125,10 +125,11 @@ let GrandCookieString = "";
 function CookieIndexThatStartsWith(Cookies, startsWith){
 
   console.log("CookiesArray Length: " + Cookies.length);
+  console.log("CookiesArray: " + Cookies);
 
   for(let i = 0; i < Cookies.length; i++){
 
-    console.log("Cookies[i][0]: " + Cookies[i][0]);
+    console.log("Cookies[i][0]: i"  + i + "Cookies[i][0]: " + Cookies[i][0]);
     console.log("startsWith: " + startsWith);
 
     if(startsWith == Cookies[i][0]){
@@ -190,8 +191,8 @@ function GetCookie(Check, Mode){
 
   let CookiesArray = Cookie.split(";");
 
-  let RememberenceCookieIndex = CookieIndexThatStartsWith(CookiesArray, "R");
   let BookmarksCookieIndex = CookieIndexThatStartsWith(CookiesArray, "B");
+  let RememberenceCookieIndex = CookieIndexThatStartsWith(CookiesArray, "R");
 
   console.log("BCI: " + BookmarksCookieIndex);
   console.log("RCI: " + RememberenceCookieIndex);
