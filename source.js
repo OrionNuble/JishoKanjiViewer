@@ -132,6 +132,18 @@ function CookieIndexThatStartsWith(Cookies, startsWith){
     console.log("Cookies[i][0]: i"  + i + "Cookies[i][0]: " + Cookies[i][0]);
     console.log("startsWith: " + startsWith);
 
+    console.log("Cookies[1][0]: " + Cookies[1][0]);
+
+    if(i == 1 && Cookies[1][0] == startsWith){
+
+      if(Cookies[i][0] != startsWith){
+
+        console.log("You want me to go crazy right?");
+
+      }
+
+    }
+
     if(startsWith == Cookies[i][0]){
 
       return i;
