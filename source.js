@@ -577,14 +577,14 @@ function UpdateBookmarksList(){
 
   console.log("KanjiOptions: " + KanjiOptions);
 
-  for(let KanjiOption in KanjiOptions){
+  for(let IND = 0; IND < KanjiOptions.length; IND++){
 
-    let OptionPair = KanjiOption.split(",");
+    let OptionPair = KanjiOptions[IND].split(",");
 
     let newBookmarkOption = document.createElement("option");
     
     newBookmarkOption.value = OptionPair[0];
-    newBookmarkOption.innerHTML = OptionPair[1];
+    newBookmarkOption.innerHTML = BookmarkedKanjiGradeANDIndex[BookmarkedGradeValue - 1][parseInt(OptionPair[1])];
 
     BookmarkedKanjiSelect.options.add(newBookmarkOption);
 
