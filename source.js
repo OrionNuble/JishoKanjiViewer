@@ -445,6 +445,16 @@ function LoadInitialPage(){
     console.log("Undefined: All Jisho Kanji Pages");
 
   }
+  if(CurrentKanjiGrade == undefined){
+
+    console.log("Undefined: Current Kanji Grade");
+
+  }
+  if(CurrentKanjiPageIndex == undefined){
+
+    console.log("Undefined: Current Kanji Page Index");
+
+  }
 
   CurrentKanjiGrade = parseInt(CurrentPageData[0]);
   CurrentPageData = CurrentPageData.substring(1);
