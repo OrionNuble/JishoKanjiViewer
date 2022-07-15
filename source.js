@@ -16,8 +16,11 @@ function SetCookie(Value, ExpiryInDays, Mode){
 
   else if(Mode == "WhereLeftOff"){
 
-    let defName = CurrentKanjiGrade;
-    let defValue = CurrentKanjiPageIndex;
+    let defName = "1";
+    let defGrade = CurrentKanjiGrade.to_String();
+    let defIndex = CurrentKanjiPageIndex.to_String();
+
+    let defValue = defGrade + defIndex;
 
     let DateObj = new Date();
 
@@ -61,6 +64,8 @@ function GetCookie(Check, Mode){
     else if(Mode == "WhereLeftOff"){
 
       ReadCookiePairArray = RememberenceCookieArray.split("=");
+
+      let RememberedCookie = ReadCookieArray[1];
 
       return ReadCookiePairArray;
   
@@ -426,7 +431,8 @@ function LoadInitialPage(){
   let CurrentPageData = GetCookie(false, "WhereLeftOff");
 
   CurrentKanjiGrade = parseInt(CurrentPageData[0]);
-  CurrentKanjiPageIndex = parseInt(CurrentPageData[1]);
+  CurrentPageData = CurrentPageData.substring(1);
+  CurrentKanjiPageIndex = parseInt(CurrentPageData);
 
   CurrentKanji = KanjiPageBeginning + AllJishoKanjiPages[CurrentKanjiGrade - 1][CurrentKanjiPageIndex] + KanjiPageEnding;
 
