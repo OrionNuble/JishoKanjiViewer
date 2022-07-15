@@ -547,6 +547,8 @@ function UpdateBookmarksList(){
   let BookmarkedGradeValueStr = document.getElementById("Grades").value;
   let BookmarkedKanjiSelect = document.getElementById("Kanjis");
 
+  console.log("I ama hereeee");
+
   BookmarkedKanjiSelect.innerHTML = "";
 
   let BookmarkedGradeValue = parseInt(BookmarkedGradeValueStr);
@@ -556,6 +558,8 @@ function UpdateBookmarksList(){
   let SingleKanjiOption = "";
 
   for(let Kanji in BookmarkedKanjiGradeANDIndex){
+
+    console.log(Kanji);
 
     SingleKanjiOption += Kanji[0].toString() + "," + Kanji[1].toString();
 
