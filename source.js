@@ -68,7 +68,11 @@ function GetCookie(Check, Mode){
 
       ReadCookiePairArray = RememberenceCookieArray.split("=");
 
+      console.log("RememberedCookiesSplitted[Left: 1 / Right: Right[0]: Grade Right[1]: Index]: " + ReadCookiePairArray);
+
       let RememberedCookie = ReadCookieArray[1];
+
+      console.log("GradeAndIndexTogether: " + RememberedCookie);
 
       return RememberedCookie;
   
@@ -433,7 +437,8 @@ function LoadInitialPage(){
 
   let CurrentPageData = GetCookie(false, "WhereLeftOff");
 
-  console.log(typeof(CurrentPageData));
+  console.log("Remembered cookie returned: " + CurrentPageData);
+  console.log("CurrentPageData type: " + typeof(CurrentPageData));
 
   CurrentKanjiGrade = parseInt(CurrentPageData[0]);
   CurrentPageData = CurrentPageData.substring(1);
