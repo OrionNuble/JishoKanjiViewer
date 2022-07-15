@@ -138,7 +138,7 @@ function CookieIndexThatStartsWith(Cookies, startsWith){
 
     CurrentCookiePair = Cookies[i].split("=");
 
-    if(CurrentCookiePair[0] == startsWith){
+    if(CurrentCookiePair[0][0] == startsWith){
 
       return i;
 
