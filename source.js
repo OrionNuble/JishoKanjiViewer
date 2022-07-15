@@ -430,12 +430,12 @@ function LoadInitialPage(){
 
   let CurrentPageData = GetCookie(false, "WhereLeftOff");
 
+  console.log(typeof(CurrentPageData));
+
   CurrentKanjiGrade = parseInt(CurrentPageData[0]);
-  console.log("Current Kanji Grade. CurrentPageData[0] <= GetCookie()" + CurrentKanjiGrade);
   CurrentPageData = CurrentPageData.substring(1);
-  console.log("Current Kanji Grade. CurrentPageData - self.[0] <= GetCookie()" + CurrentPageData);
   CurrentKanjiPageIndex = parseInt(CurrentPageData);
-  console.log("INT[Current Kanji Grade. CurrentPageData - self.[0] <= GetCookie()]" + CurrentKanjiPageIndex);
+
   CurrentKanji = KanjiPageBeginning + AllJishoKanjiPages[CurrentKanjiGrade - 1][CurrentKanjiPageIndex] + KanjiPageEnding;
 
   PrintIndexString = CurrentKanjiPageIndex + 1;
