@@ -566,7 +566,7 @@ function UpdateBookmarksList(){
 
     console.log("Supposed to be an element of the bookmarks array: " + BookmarkedKanjiGradeANDIndex[ind]);
 
-    SingleKanjiOption += BookmarkedKanjiGradeANDIndex[ind][0].toString() + "," + BookmarkedKanjiGradeANDIndex[ind][0].toString();
+    SingleKanjiOption += BookmarkedKanjiGradeANDIndex[ind][0].toString() + "," + BookmarkedKanjiGradeANDIndex[ind][1].toString();
 
     console.log("Current Option: " + SingleKanjiOption + "|| It's type is: " + typeof(SingleKanjiOption));
 
