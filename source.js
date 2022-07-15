@@ -430,9 +430,19 @@ function LoadInitialPage(){
 
   let CurrentPageData = GetCookie(false, "WhereLeftOff");
 
-  if(CurrentKanjiGrade == undefined && CurrentKanjiPageIndex == undefined && AllJishoKanjiPages == undefined){
+  if(KanjiPageBeginning == undefined){
 
-    console.log("Heyoo");
+    console.log("Undefined: Kanji Page Beginning");
+
+  }
+  if(KanjiPageEnding == undefined){
+
+    console.log("Undefined: Kanji Page Ending");
+
+  }
+  if(AllJishoKanjiPages == undefined){
+
+    console.log("Undefined: All Jisho Kanji Pages");
 
   }
 
