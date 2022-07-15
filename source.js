@@ -26,7 +26,7 @@ function GetCookie(Check){
 
 
     ReadCookie = ReadCookieArray.split("=")[1];
-    
+
     return ReadCookie;
 
   }
@@ -243,6 +243,8 @@ function GetGradeLevel(){
 
   let GradeSelect = document.getElementById('GradeLevel');
   let SelectedGradeText = GradeSelect.value;
+
+  console.log("Selected Grade Text Value: " + SelectedGradeText);
 
   if(SelectedGradeText == "One"){
 
