@@ -185,8 +185,14 @@ function GetCookie(Check, Mode){
 
   let CookiesArray = Cookie.split(";");
 
-  let ReadCookieArray = CookiesArray[CookieIndexThatStartsWith(CookiesArray, "B")];
-  let RememberenceCookieArray = CookiesArray[CookieIndexThatStartsWith(CookiesArray, "R")];
+  let BookmarksCookieIndex = CookieIndexThatStartsWith(CookiesArray, "B");
+  let RememberenceCookieIndex = CookieIndexThatStartsWith(CookiesArray, "R");
+
+  console.log("BCI: " + BookmarksCookieIndex);
+  console.log("RCI: " + RememberenceCookieIndex);
+
+  let ReadCookieArray = CookiesArray[BookmarksCookieIndex];
+  let RememberenceCookieArray = CookiesArray[RememberenceCookieIndex];
 
   console.log("CookiesArray[B]: " + ReadCookieArray);
   console.log("CookiesArray[R]: " + RememberenceCookieArray);
