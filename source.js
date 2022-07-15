@@ -126,6 +126,8 @@ function CookieIndexThatStartsWith(Cookies, startsWith){
 
   let CurrentCookiePair = [];
 
+  console.log(Cookies);
+
   for(let i = 0; i < Cookies.length; i++){
 
     CurrentCookiePair = Cookies[i].split("=");
