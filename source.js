@@ -430,36 +430,12 @@ function LoadInitialPage(){
 
   let CurrentPageData = GetCookie(false, "WhereLeftOff");
 
-  if(KanjiPageBeginning == undefined){
-
-    console.log("Undefined: Kanji Page Beginning");
-
-  }
-  if(KanjiPageEnding == undefined){
-
-    console.log("Undefined: Kanji Page Ending");
-
-  }
-  if(AllJishoKanjiPages == undefined){
-
-    console.log("Undefined: All Jisho Kanji Pages");
-
-  }
-  if(CurrentKanjiGrade == undefined){
-
-    console.log("Undefined: Current Kanji Grade");
-
-  }
-  if(CurrentKanjiPageIndex == undefined){
-
-    console.log("Undefined: Current Kanji Page Index");
-
-  }
-
   CurrentKanjiGrade = parseInt(CurrentPageData[0]);
+  console.log("Current Kanji Grade. CurrentPageData[0] <= GetCookie()" + CurrentKanjiGrade);
   CurrentPageData = CurrentPageData.substring(1);
+  console.log("Current Kanji Grade. CurrentPageData - self.[0] <= GetCookie()" + CurrentPageData);
   CurrentKanjiPageIndex = parseInt(CurrentPageData);
-
+  console.log("INT[Current Kanji Grade. CurrentPageData - self.[0] <= GetCookie()]" + CurrentKanjiPageIndex);
   CurrentKanji = KanjiPageBeginning + AllJishoKanjiPages[CurrentKanjiGrade - 1][CurrentKanjiPageIndex] + KanjiPageEnding;
 
   PrintIndexString = CurrentKanjiPageIndex + 1;
