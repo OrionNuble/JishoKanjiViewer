@@ -48,6 +48,9 @@ function GetCookie(Check, Mode){
   let ReadCookieArray = CookiesArray[0];
   let RememberenceCookieArray = CookiesArray[1];
 
+  console.log("CookiesArray[0]: " + ReadCookieArray);
+  console.log("CookiesArray[1]: " + RememberenceCookieArray);
+
   let ReadCookie = "";
   let ReadCookiePairArray = [];
 
