@@ -557,9 +557,11 @@ function UpdateBookmarksList(){
 
   let SingleKanjiOption = "";
 
+  console.log("Array: " + BookmarkedKanjiGradeANDIndex);
+
   for(let Kanji in BookmarkedKanjiGradeANDIndex){
 
-    console.log(Kanji);
+    console.log("Supposed to be an element of the bookmarks array: " + Kanji);
 
     SingleKanjiOption += Kanji[0].toString() + "," + Kanji[1].toString();
 
