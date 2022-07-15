@@ -198,8 +198,8 @@ function GetCookie(Check, Mode){
   let CookiesArray = [];
 
   CookiesArray = Cookie.split(";");
+  
   let BookmarksCookieIndex = CookieIndexThatStartsWith(CookiesArray, "B");
-  CookiesArray = [CookiesArray[1], CookiesArray[2]];
   let RememberenceCookieIndex = CookieIndexThatStartsWith(CookiesArray, "R");
 
   console.log("BCI: " + BookmarksCookieIndex);
