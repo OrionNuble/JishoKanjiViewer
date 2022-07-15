@@ -70,7 +70,7 @@ function GetCookie(Check, Mode){
 
       console.log("RememberedCookiesSplitted[Left: 1 / Right: Right[0]: Grade Right[1]: Index]: " + ReadCookiePairArray);
 
-      let RememberedCookie = ReadCookieArray[1];
+      let RememberedCookie = ReadCookiePairArray[1];
 
       console.log("GradeAndIndexTogether: " + RememberedCookie);
 
