@@ -561,11 +561,11 @@ function UpdateBookmarksList(){
 
   console.log("Array: " + BookmarkedKanjiGradeANDIndex);
 
-  for(let Kanji in BookmarkedKanjiGradeANDIndex){
+  for(let ind = 0; ind < BookmarkedKanjiGradeANDIndex.length; ind++){
 
     console.log("Supposed to be an element of the bookmarks array: " + Kanji);
 
-    SingleKanjiOption += Kanji[0].toString() + "," + Kanji[1].toString();
+    SingleKanjiOption += BookmarkedKanjiGradeANDIndex[ind][0].toString() + "," + BookmarkedKanjiGradeANDIndex[ind][0].toString();
 
     KanjiOptions.push(SingleKanjiOption);
     SingleKanjiOption = "";
