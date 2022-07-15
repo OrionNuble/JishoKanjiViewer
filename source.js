@@ -371,24 +371,6 @@ function LoadChecks(){
 
   }
 
-  /*
-  console.log("Current Grade-Index Pair: " + CurrentPair);
-
-  for (let u = 0; u < BookmarkedKanjiGradeANDIndex.length; u++){
-
-    console.log("Current BookmarkedKanjiGradeIndex[u]'th value: " + BookmarkedKanjiGradeANDIndex[u]);
-
-    if(isInBookmarksArray(CurrentPair, BookmarkedKanjiGradeANDIndex)){
-
-      document.getElementById("Bookmarked").checked = true;
-      break;
-
-    }
-
-  }
-
-  document.getElementById("Bookmarked").checked = false;*/
-
 }
 
 function LoadBookmarkedKanjis(){
@@ -434,11 +416,13 @@ function ManageBookmarksLive(){
   if(Check){
 
     WriteBookmarkAsCookie();
+    UpdateBookmarksList();
 
   }
   else{
 
     DeleteBookmark();
+    UpdateBookmarksList();
 
   }
 
@@ -598,6 +582,8 @@ function UpdateBookmarksList(){
     console.log("Current Option Pair: " + OptionPair);
 
     let newBookmarkOption = document.createElement("option");
+
+    let OptionValue = "";
     
     console.log("Value: " + OptionPair[0]);
     console.log("Kanji Grade from the select: " + BookmarkedGradeValue);
@@ -605,7 +591,9 @@ function UpdateBookmarksList(){
     console.log("The type of OptionPair[1]: " + typeof(OptionPair[1]));
     console.log("The Kanji at Grade,Index: " + FetchKanji(BookmarkedGradeValue, parseInt(OptionPair[1])));
 
-    newBookmarkOption.value = OptionPair[0];
+    OptionValue = OptionPair[0] + OptionPair[1];
+
+    newBookmarkOption.value = OptionValue;
     newBookmarkOption.innerHTML = FetchKanji(BookmarkedGradeValue, parseInt(OptionPair[1]));
 
     BookmarkedKanjiSelect.options.add(newBookmarkOption);
@@ -618,11 +606,16 @@ function UpdateBookmarksList(){
 
 function BringForthBookmarkedKanji(){
 
-  let BookmarkedKanjiGradeSelect = document.getElementById("Grades");
+  let ReadOptionValue = "";
+
   let BookmarkedKanjiSelect = document.getElementById("Kanjis");
 
-  CurrentBookmarkedKanjiGrade = parseInt(BookmarkedKanjiGradeSelect.value);
-  CurrentBookmarkedKanjiPageIndex = parseInt(BookmarkedKanjiSelect.value);
+  ReadOptionValue = BookmarkedKanjiSelect.value;
+
+  CurrentBookmarkedKanjiGrade = ReadOptionValue[0];
+  ReadOptionValue = ReadOptionValue.substring(1);
+
+  CurrentBookmarkedKanjiPageIndex = parseInt(ReadOptionValue);
 
   CurrentKanjiGrade = CurrentBookmarkedKanjiGrade;
   CurrentKanjiPageIndex = CurrentBookmarkedKanjiPageIndex - 1;
