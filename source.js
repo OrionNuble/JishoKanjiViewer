@@ -26,9 +26,7 @@ function GetCookie(Check){
 
 
     ReadCookie = ReadCookieArray.split("=")[1];
-
-    console.log("Supposed Cookie: " + ReadCookie);
-
+    
     return ReadCookie;
 
   }
@@ -241,7 +239,7 @@ function FetchThePreviousKanji(){
 
 }
 
-function LoadGradeLevel(){
+function GetGradeLevel(){
 
   let GradeSelect = document.getElementById('GradeLevel');
   let SelectedGradeText = GradeSelect.value;
@@ -280,10 +278,6 @@ function LoadGradeLevel(){
 
     console.log(SelectedGradeText);
   }
-
-  CurrentKanjiPageIndex = -1;
-
-  FetchTheNextKanji();
 
 }
 
@@ -360,8 +354,6 @@ function ParseCookieString(CookieString){
 
 function LoadChecks(){
 
-  let CurrentPair = [CurrentKanjiGrade, CurrentKanjiPageIndex];
-
   if(isInBookmarksArray()){
 
     document.getElementById("Bookmarked").checked = true;
@@ -404,14 +396,6 @@ function LoadBookmarkedKanjis(){
 
   let CookieParsedData = [];
 
-  // Read Cookie and have the string
-
-  console.log("GC at the beginning of LoadBookmarkedKanjis(): " + GrandCookieString);
-
-  //GrandCookieString = GetCookie();
-
-  console.log("GC after the GetCookie function returned in LoadBookmarkedKanjis() [Supposed to be updated]: " + GrandCookieString);
-
   CookieParsedData = ParseCookieString(GrandCookieString);
 
   for(let j = 0; j < CookieParsedData.length; j++){
@@ -432,8 +416,6 @@ function LoadBookmarkedKanjis(){
 
   LoadChecks();
 
-  // Use the data to load bookmarks selection
-
 }
 
 let ChosenBookmarkedKanjiPosCode = CurrentKanjiGrade.toString() + CurrentKanjiPageIndex.toString();
@@ -441,7 +423,6 @@ let ChosenBookmarkedKanjiPosCode = CurrentKanjiGrade.toString() + CurrentKanjiPa
 function ManageBookmarksLive(){
 
   let Check = document.getElementById('Bookmarked').checked;
-  console.log("Checked: " + Check);
 
   if(Check){
 
@@ -546,11 +527,7 @@ function DeleteBookmark(){
 
   }
 
-  console.log("Before Removal: " + BookmarkedKanjiGradeANDIndex);
-
   BookmarkedKanjiGradeANDIndex = BookmarkedKanjisEdited;
-
-  console.log("After Removal: " + BookmarkedKanjiGradeANDIndex);
 
   GrandCookieString = DeparseArrayIntoCookieString();
 
