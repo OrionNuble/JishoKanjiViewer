@@ -17,8 +17,8 @@ function SetCookie(Value, ExpiryInDays, Mode){
   else if(Mode == "WhereLeftOff"){
 
     let defName = "1";
-    let defGrade = CurrentKanjiGrade.to_String();
-    let defIndex = CurrentKanjiPageIndex.to_String();
+    let defGrade = CurrentKanjiGrade.toString();
+    let defIndex = CurrentKanjiPageIndex.toString();
 
     let defValue = defGrade + defIndex;
 
