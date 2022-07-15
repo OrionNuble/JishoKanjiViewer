@@ -579,17 +579,25 @@ function UpdateBookmarksList(){
 
   for(let IND = 0; IND < KanjiOptions.length; IND++){
 
+    console.log("----------------------------------------");
+
     let OptionPair = KanjiOptions[IND].split(",");
+
+    console.log("Current Option Pair: " + OptionPair);
 
     let newBookmarkOption = document.createElement("option");
     
+    console.log("Value: " + OptionPair[0]);
+    console.log("Kanji Grade from the select: " + BookmarkedGradeValue);
+    console.log("Kanji index from the Bookmarks array: " + OptionPair[1]);
+    console.log("The Kanji at Grade,Index: " + BookmarkedKanjiGradeANDIndex[BookmarkedGradeValue - 1][parseInt(OptionPair[1])]);
+
     newBookmarkOption.value = OptionPair[0];
     newBookmarkOption.innerHTML = BookmarkedKanjiGradeANDIndex[BookmarkedGradeValue - 1][parseInt(OptionPair[1])];
 
-    console.log("Bookmarked Kanji(INNER HTML): " + newBookmarkOption.innerHTML);
-    console.log("Bookmarked Kanji(ARRAY): " + BookmarkedKanjiGradeANDIndex[BookmarkedGradeValue - 1][parseInt(OptionPair[1])]);
-
     BookmarkedKanjiSelect.options.add(newBookmarkOption);
+
+    console.log("----------------------------------------");
 
   }
 
