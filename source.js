@@ -423,6 +423,11 @@ function ParseCookieString(CookieString){
 
 function LoadInitialPage(){
 
+  let CurrentPageData = GetCookie(false, "WhereLeftOff");
+
+  CurrentKanjiGrade = parseInt(CurrentPageData[0]);
+  CurrentKanjiPageIndex = parseInt(CurrentPageData[1]);
+
   CurrentKanji = KanjiPageBeginning + AllJishoKanjiPages[CurrentKanjiGrade - 1][CurrentKanjiPageIndex] + KanjiPageEnding;
 
   PrintIndexString = CurrentKanjiPageIndex + 1;
@@ -477,14 +482,7 @@ function LoadBookmarkedKanjis(){
 
   }
 
-  console.log(BookmarkedKanjiGradeANDIndex);  
-
-  let CurrentPageData = GetCookie(false, "WhereLeftOff");
-
-  CurrentKanjiGrade = parseInt(CurrentPageData[0]);
-  CurrentKanjiPageIndex = parseInt(CurrentPageData[1]);
-
-  LoadInitialPage();
+  console.log(BookmarkedKanjiGradeANDIndex);
 
   LoadChecks();
 
@@ -708,6 +706,8 @@ function BringForthBookmarkedKanji(){
 }
 
 function HTMLOnloadFunctions(){
+
+  LoadInitialPage();
 
   LoadBookmarkedKanjis();
 
