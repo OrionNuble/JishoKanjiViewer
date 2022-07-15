@@ -7,7 +7,7 @@
   <body onload="LoadBookmarkedKanjis()">
     <button type="button" name="PreviousKanji" class="PrevButton", onclick="FetchThePreviousKanji()">Previous Kanji</button>
     <button type="button" name="NextKanji" class="NextButton", onclick="FetchTheNextKanji()">Next Kanji</button>
-    <label for="Grades" class="ChoseGradeLabel">Please Choose a Grade Level</label>
+    <label for="Grades" class="ChoseGradeLabel" onchange="GetGradeLevel()">Please Choose a Grade Level</label>
     <select id="GradeLevel">
       <option value="One">Grade One</option>
       <option value="Two">Grade Two</option>
