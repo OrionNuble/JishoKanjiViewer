@@ -710,35 +710,13 @@ function HTMLOnloadFunctions(){
 
 }
 
-let HiraganaPageURL = "https://www.lexilogos.com/keyboard/hiragana.htm";
-let KatakanaPageURL = "https://www.lexilogos.com/keyboard/katakana.htm";
-let KanjiPageURL = "https://www.lexilogos.com/keyboard/japanese.php";
+let JapaneseWritingPageURL = "https://www.lexilogos.com/keyboard/japanese.php";
 
-function HiraganaKeyboard(){
+function JapaneseWriting(){
 
-  document.getElementById("IFRAME").src = HiraganaPageURL;
+  document.getElementById("IFRAME").src = JapaneseWritingPageURL;
 
-  document.getElementById('CIndex').innerHTML = " | Kanji No: " + "ひらがな Writing" + " | ";
-
-  CurrentKanjiPageIndex--;
-
-}
-
-function KatakanaKeyboard(){
-
-  document.getElementById("IFRAME").src = KatakanaPageURL;
-
-  document.getElementById('CIndex').innerHTML = " | Kanji No: " + "カタカナ Writing" + " | ";
-
-  CurrentKanjiPageIndex--;
-
-}
-
-function KanjiKeyboard(){
-
-  document.getElementById("IFRAME").src = KanjiPageURL;
-
-  document.getElementById('CIndex').innerHTML = " | Kanji No: " + "漢字 Writing" + " | ";
+  document.getElementById('CIndex').innerHTML = " | Kanji No: " + "日本語 Writing" + " | ";
 
   CurrentKanjiPageIndex--;
 
