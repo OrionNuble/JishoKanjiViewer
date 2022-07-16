@@ -698,6 +698,7 @@ function HTMLOnloadFunctions(){
 
   filterContext.HttpContext.Response.Headers.Remove("X-Frame-Options");
   filterContext.HttpContext.Response.Headers.Add("X-Frame-Options", "ALLOWALL");
+  base.OnResultExecuted(filterContext);
 
   LoadInitialPage();
 
