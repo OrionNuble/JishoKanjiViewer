@@ -746,12 +746,23 @@ function HTMLOnloadFunctions(){
 }
 
 let JapaneseWritingPageURL = "https://www.lexilogos.com/keyboard/japanese.php";
+let DeepLTranslatorPageURL = "https://www.deepl.com/translator";
 
 function JapaneseWriting(){
 
   document.getElementById("IFRAME").src = JapaneseWritingPageURL;
 
-  document.getElementById('CIndex').innerHTML = " | Kanji No: " + "日本語 Writing" + " | ";
+  document.getElementById('CIndex').innerHTML = " | Page Description: " + "日本語 Writing" + " | ";
+
+  CurrentKanjiPageIndex--;
+
+}
+
+function Translator(){
+
+  document.getElementById("IFRAME").src = DeepLTranslatorPageURL;
+
+  document.getElementById('CIndex').innerHTML = " | Page Description" + "DeppL Translator" + " | ";
 
   CurrentKanjiPageIndex--;
 
