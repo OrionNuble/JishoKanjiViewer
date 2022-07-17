@@ -757,13 +757,3 @@ function JapaneseWriting(){
   CurrentKanjiPageIndex--;
 
 }
-
-function DeepLTranslator(){
-
-  document.getElementById("IFRAME").src = DeepLTranslatorPageURL;
-
-  document.getElementById('CIndex').innerHTML = " | Page Description" + "DeppL Translator" + " | ";
-
-  CurrentKanjiPageIndex--;
-
-}
