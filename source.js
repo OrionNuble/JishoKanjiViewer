@@ -758,7 +758,7 @@ function JapaneseWriting(){
 
 }
 
-function Translator(){
+function DeepLTranslator(){
 
   document.getElementById("IFRAME").src = DeepLTranslatorPageURL;
 
