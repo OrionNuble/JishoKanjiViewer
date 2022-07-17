@@ -149,6 +149,8 @@ for(let j = 0; j < AllJishoKanjiPages.length; j++){
 
 }
 
+console.log(DuplicateGrade);
+
 console.log("Total Number of Kanjis: " + AllKanjiCount);
 
 let KanjiPageBeginning = "https://jisho.org/search/";
