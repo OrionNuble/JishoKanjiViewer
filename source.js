@@ -42,8 +42,8 @@ let Grade4Kanjis = GradeFour_One + GradeFour_Two + GradeFour_Three;
 // Grade Five
 
 let GradeFive_One = "政統経現性制務提総領設保証支報得護解態資幹際査告判衛義在件団任増情示基価確勢減士容応演能再格過税検常状営織職弁可構費比素防益断境規術導備条独興輸述率武紀象張限額賀準賞造技徳復移個評属非型災製財識退史謝"; // 100 (*99/Missed One)
-let GradeFive_Two = ""; // 100
-let GradeFive_Three = ""; // 6
+let GradeFive_Two = "程富接授効旧師易序殺質舎破編責修銭採酸故桜句歴因貿講河航墓適婦寄余禁逆久妻暴飼券険往均圧許敵留罪停肥脈精則測豊眼厚喜囲略絶潔救版損群仏績築志混居雑招永恩刊像賛犯布俵複似承迷夢燃仮快舌貯慣預液貧祖鉱枝毒"; // 100
+let GradeFive_Three = "粉貸綿銅堂耕"; // 6
 
 let Grade5Kanjis = GradeFive_One + GradeFive_Two + GradeFive_Three;
 
