@@ -41,7 +41,7 @@ let Grade4Kanjis = GradeFour_One + GradeFour_Two + GradeFour_Three;
 
 // Grade Five
 
-let GradeFive_One = ""; // 100
+let GradeFive_One = "政統経現性制務提総領設保証支報得護解態資幹際査告判衛義在件団任増情示基価確勢減士容応演能再格過税検常状営織職弁可構費比素防益断境規術導備条独興輸述率武紀象張限額賀準賞造技徳復移個評属非型災製財識退史謝"; // 100 (*99/Missed One)
 let GradeFive_Two = ""; // 100
 let GradeFive_Three = ""; // 6
 
@@ -105,6 +105,15 @@ AllJishoKanjiPages.push(GradeFourKanjiPages);
 AllJishoKanjiPages.push(GradeFiveKanjiPages);
 AllJishoKanjiPages.push(GradeSixKanjiPages);
 
+let AllKanjiCount = 0;
+
+for (let k = 0; k < AllJishoKanjiPages.length; k++){
+
+  AllKanjiCount += AllJishoKanjiPages[k].length;
+
+}
+
+console.log("Total Number of Kanjis: " + AllKanjiCount);
 
 let KanjiPageBeginning = "https://jisho.org/search/";
 
