@@ -117,7 +117,9 @@ function hasDuplicate(Array){
 
       if(i != j && Array[j] == ControlElement){
 
-        return true;
+        let JInd = i.toString() + "," + j.toString();
+
+        return JInd;
 
       }
 
@@ -125,7 +127,7 @@ function hasDuplicate(Array){
 
   }
 
-  return false;
+  return "-1";
 
 }
 
@@ -137,19 +139,11 @@ for (let k = 0; k < AllJishoKanjiPages.length; k++){
 
 }
 
-let DuplicateGrade = [];
+let DupIndex = "";
 
-for(let j = 0; j < AllJishoKanjiPages.length; j++){
+DupIndex = hasDuplicate(GradeFourKanjiPages);
 
-  if(hasDuplicate(AllJishoKanjiPages[j])){
-
-    DuplicateGrade.push(j);
-
-  }
-
-}
-
-console.log(DuplicateGrade);
+console.log(DupIndex);
 
 console.log("Total Number of Kanjis: " + AllKanjiCount);
 
