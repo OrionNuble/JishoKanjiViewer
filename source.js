@@ -105,11 +105,47 @@ AllJishoKanjiPages.push(GradeFourKanjiPages);
 AllJishoKanjiPages.push(GradeFiveKanjiPages);
 AllJishoKanjiPages.push(GradeSixKanjiPages);
 
+function hasDuplicate(Array){
+
+  let ControlElement = "";
+
+  for(let i = 0; i < Array.length; i++){
+
+    ControlElement = Array[i];
+
+    for(let j = 0; j < Array.length; j++){
+
+      if(i != j && Array[j] == ControlElement){
+
+        return true;
+
+      }
+
+    }
+
+  }
+
+  return false;
+
+}
+
 let AllKanjiCount = 0;
 
 for (let k = 0; k < AllJishoKanjiPages.length; k++){
 
   AllKanjiCount += AllJishoKanjiPages[k].length;
+
+}
+
+let DuplicateGrade = [];
+
+for(let j = 0; j < AllJishoKanjiPages.length; j++){
+
+  if(hasDuplicate(AllJishoKanjiPages[j])){
+
+    DuplicateGrade.push(j);
+
+  }
 
 }
 
