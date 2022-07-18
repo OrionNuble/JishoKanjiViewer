@@ -893,4 +893,6 @@ function JapaneseGrammar(){
 
   CurrentKanjiPageIndex--;
 
+  FetchTheNextKanji();
+
 }
