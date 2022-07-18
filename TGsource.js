@@ -189,65 +189,22 @@ function CookieIndexThatStartsWith(Cookies, startsWith){
 
 }
 
-function SetCookie(Value, ExpiryInDays, Mode){
+function SetCookie(Value, ExpiryInDays){
 
-  if(Mode == "Bookmarks"){
 
-    let defName = "Bookmarks";
+  let defName = "Page";
 
-    let DateObj = new Date();
+  let DateObj = new Date();
 
-    DateObj.setTime(DateObj.getTime() + (ExpiryInDays * 24 * 60 * 60));
+  DateObj.setTime(DateObj.getTime() + (ExpiryInDays * 24 * 60 * 60));
 
-    let ExpiryDate = "; expires=" + DateObj.toUTCString();
+  let ExpiryDate = "; expires=" + DateObj.toUTCString();
 
-    document.cookie = defName + "=" + Value + ExpiryDate;
-
-  }
-
-  else if(Mode == "WhereLeftOff"){
-
-    let defName = "Rememberence";
-    let defGrade = CurrentKanjiGrade.toString();
-    let defIndex = CurrentKanjiPageIndex.toString();
-
-    let defValue = defGrade + defIndex;
-
-    let DateObj = new Date();
-
-    DateObj.setTime(DateObj.getTime() + (ExpiryInDays * 24 * 60 * 60));
-
-    let ExpiryDate = "; expires=" + DateObj.toUTCString();
-
-    document.cookie = defName + "=" + defValue + ExpiryDate;
-
-  }
-  else if(Mode == "Learned"){
-
-    let defName = "Learned";
-    let defGrade = CurrentKanjiGrade.toString();
-    let defIndex = CurrentKanjiPageIndex.toString();
-
-    let defValue = defGrade + defIndex;
-
-    let DateObj = new Date();
-
-    DateObj.setTime(DateObj.getTime() + (ExpiryInDays * 24 * 60 * 60));
-
-    let ExpiryDate = "; expires=" + DateObj.toUTCString();
-
-    document.cookie = defName + "=" + defValue + ExpiryDate;
-
-  }
-  else{
-
-    console.error("Invalid SetCookie() Mode: Mode: " + Mode);
-
-  }
+  document.cookie = defName + "=" + Value + ExpiryDate;
 
 }
 
-function GetCookie(Check, Mode){
+function GetCookie(Check){
 
   let Cookie = document.cookie;
 
@@ -255,106 +212,34 @@ function GetCookie(Check, Mode){
 
   CookiesArray = Cookie.split(";");
 
-  let BookmarksCookieIndex = CookieIndexThatStartsWith(CookiesArray, "B");
-  let RememberenceCookieIndex = CookieIndexThatStartsWith(CookiesArray, "R");
-  let LearnedCookieIndex = CookieIndexThatStartsWith(CookiesArray, "L");
+  let BookmarksCookieIndex = CookieIndexThatStartsWith(CookiesArray, "P");
 
   let BookmarksCookie = CookiesArray[BookmarksCookieIndex];
-  let RememberenceCookie = CookiesArray[RememberenceCookieIndex];
-  let LearnedCookieStr = CookiesArray[LearnedCookieIndex];
 
   let ReadCookie = "";
   let ReadCookiePairArray = [];
 
   if(!Check){
 
-    if(Mode == "Bookmarks"){
+    ReadCookie = BookmarksCookie.split("=")[1];
 
-      ReadCookie = BookmarksCookie.split("=")[1];
-
-      return ReadCookie;
-
-    }
-    else if(Mode == "WhereLeftOff"){
-
-      ReadCookiePairArray = RememberenceCookie.split("=");
-
-      let RememberedCookie = ReadCookiePairArray[1];
-
-      return RememberedCookie;
-  
-    }
-    else if(Mode == "Learned"){
-
-      ReadCookiePairArray = LearnedCookieStr.split("=");
-
-      let LearnedCookieStr = ReadCookiePairArray[1];
-
-      return LearnedCookieStr;
-      
-
-    }
-    else{
-  
-      console.error("Invalid SetCookie() Mode: Mode: " + Mode);
-  
-    }
+    return ReadCookie;
     
 
   }
 
   else{
 
-    if(Mode == "Bookmarks"){
+    if(BookmarksCookie != undefined){
 
-      ReadCookie = BookmarksCookie.split("=")[0];
-
-      if(ReadCookie == "0"){
-
-        return true;
-
-      }
-      else{
-
-        return false;
-
-      }
-
-    }
-    else if(Mode == "WhereLeftOff"){
-
-      if(RememberenceCookie != undefined){
-
-        return true;
-
-      }
-      else{
-
-        return false;
-
-      }
-
-    }
-    else if(Mode == "Learned"){
-
-      if(LearnedCookieStr != undefined){
-
-        return true;
-
-      }
-      else{
-
-        return false;
-
-      }
+      return true;
 
     }
     else{
-  
-      console.error("Invalid SetCookie() Mode: Mode: " + Mode);
-  
-    }
 
+      return false;
+
+    }
 
   }
 
@@ -384,7 +269,7 @@ function isInBookmarksArray() {
 
 }
 
-function FetchTheNextKanji(){
+function FetchTheNextPage(){
 
   if (CurrentKanjiPageIndex + 1 < AllJishoKanjiPages[CurrentKanjiGrade - 1].length){
 
@@ -406,11 +291,9 @@ function FetchTheNextKanji(){
   document.getElementById('CIndex').innerHTML = "Kanji No: " + PrintIndexString.toString();
   document.getElementById('Bookmarked').checked = isInBookmarksArray();
 
-  SetCookie("0", 3650, "WhereLeftOff");
-
 }
 
-function FetchThePreviousKanji(){
+function FetchThePreviousPage(){
 
   if (CurrentKanjiPageIndex - 1 >= 0){
 
@@ -434,15 +317,6 @@ function FetchThePreviousKanji(){
 
 }
 
-function GetGradeLevel(){
-
-  let GradeSelect = document.getElementById('GradeLevel');
-  let SelectedGradeText = parseInt(GradeSelect.value);
-
-  CurrentKanjiGrade = parseInt(GradeSelect.value);
-
-}
-
 function isInRangeInc(Num, Min, Max){
 
   if (Num >= Num && Num <= Max){
@@ -452,24 +326,6 @@ function isInRangeInc(Num, Min, Max){
   }
 
   return false;
-
-}
-
-function JumpToIndex(){
-
-  let ChosenIndexString = document.getElementById('Choose').value;
-
-  let ChosenIndex = parseInt(ChosenIndexString);
-
-  if (isInRangeInc(ChosenIndex, 1, AllJishoKanjiPages[CurrentKanjiGrade - 1].length)){
-
-    CurrentKanjiPageIndex = ChosenIndex - 2;
-
-    FetchTheNextKanji();
-
-    document.getElementById('Choose').value = "";
-
-  }
 
 }
 
@@ -514,7 +370,7 @@ function ParseCookieString(CookieString){
 
 function LoadInitialPage(){
 
-  let CurrentPageData = GetCookie(false, "WhereLeftOff");
+  let CurrentPageData = GetCookie(false);
 
   CurrentKanjiGrade = parseInt(CurrentPageData[0]);
   CurrentPageData = CurrentPageData.substring(1);
@@ -558,7 +414,7 @@ function LoadBookmarkedKanjis(){
 
   let CookieParsedData = [];
 
-  GrandCookieString = GetCookie(false, "Bookmarks");
+  GrandCookieString = GetCookie(false);
 
   CookieParsedData = ParseCookieString(GrandCookieString);
 
@@ -607,17 +463,17 @@ function WriteBookmarkAsCookie() {
 
   if(!isInBookmarksArray()){
 
-    CookieCheck = GetCookie(true, "Bookmarks");
+    CookieCheck = GetCookie(true);
 
     let NewCookieValue = CurrentKanjiGrade.toString() + CurrentKanjiPageIndex.toString().length.toString() + CurrentKanjiPageIndex.toString();
 
     if(CookieCheck){
 
-      GrandCookieString = GetCookie(false, "Bookmarks");
+      GrandCookieString = GetCookie(false);
 
       GrandCookieString += NewCookieValue;
 
-      SetCookie(GrandCookieString, 3650, "Bookmarks");
+      SetCookie(GrandCookieString, 3650);
 
     }
 
@@ -625,7 +481,7 @@ function WriteBookmarkAsCookie() {
 
       GrandCookieString += NewCookieValue;
 
-      SetCookie(GrandCookieString, 3650, "Bookmarks");
+      SetCookie(GrandCookieString, 3650);
 
     }
 
@@ -691,7 +547,7 @@ function DeleteBookmark(){
 
   GrandCookieString = DeparseArrayIntoCookieString(BookmarkedKanjiGradeANDIndex);
 
-  SetCookie(GrandCookieString, 3650, "Bookmarks");
+  SetCookie(GrandCookieString, 3650);
 
 }
 
@@ -763,26 +619,6 @@ function BringForthBookmarkedKanji(){
 
   CurrentKanjiGrade = CurrentBookmarkedKanjiGrade;
   CurrentKanjiPageIndex = CurrentBookmarkedKanjiPageIndex - 1;
-
-  FetchTheNextKanji();
-
-}
-
-function BringForthLearnedKanji(){
-
-  let ReadOptionValue = "";
-
-  let LearnedKanjiSelect = document.getElementById("LKanjis");
-
-  ReadOptionValue = LearnedKanjiSelect.value;
-
-  CurrentLearnedKanjiGrade = ReadOptionValue[0];
-  ReadOptionValue = ReadOptionValue.substring(1);
-
-  CurrentLearnedKanjiPageIndex = parseInt(ReadOptionValue);
-
-  CurrentKanjiGrade = CurrentLearnedKanjiGrade;
-  CurrentKanjiPageIndex = CurrentLearnedKanjiPageIndex - 1;
 
   FetchTheNextKanji();
 

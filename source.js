@@ -809,7 +809,7 @@ function HTMLOnloadFunctions(){
 }
 
 let JapaneseWritingPageURL = "https://www.lexilogos.com/keyboard/japanese.php";
-let JapaneseGrammarPageURL = "https://www.tofugu.com/japanese-grammar/tai-form/";
+let JapaneseGrammarPageURL = "TofuguGrammarViewer.html";
 
 function JapaneseWriting(){
 
