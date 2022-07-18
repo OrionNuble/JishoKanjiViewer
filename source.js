@@ -165,7 +165,7 @@ let CurrentKanjiGrade = 1;
 let CurrentBookmarkedKanjiPageIndex = 0;
 let CurrentBookmarkedKanjiGrade = 1;
 
-let CurrentGrammarPageIndex = 0;
+let CurrentGrammarPageIndex = -1;
 
 let CurrentKanji = "";
 let CurrentPage = "";
