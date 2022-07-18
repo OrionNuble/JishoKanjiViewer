@@ -263,6 +263,14 @@ function GetCookie(Check, Mode){
   let RememberenceCookie = CookiesArray[RememberenceCookieIndex];
   let LearnedCookieStr = CookiesArray[LearnedCookieIndex];
 
+  console.log("LearnedCookieStr: " + LearnedCookieStr);
+
+  if(LearnedCookieStr == undefined){
+
+    console.log("Undefiened");
+
+  }
+
   let ReadCookie = "";
   let ReadCookiePairArray = [];
 
