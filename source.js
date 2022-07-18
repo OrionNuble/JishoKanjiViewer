@@ -261,7 +261,7 @@ function GetCookie(Check, Mode){
 
   let BookmarksCookie = CookiesArray[BookmarksCookieIndex];
   let RememberenceCookie = CookiesArray[RememberenceCookieIndex];
-  let LearnedCookie = CookiesArray[LearnedCookieIndex];
+  let LearnedCookieStr = CookiesArray[LearnedCookieIndex];
 
   let ReadCookie = "";
   let ReadCookiePairArray = [];
@@ -286,11 +286,11 @@ function GetCookie(Check, Mode){
     }
     else if(Mode == "Learned"){
 
-      ReadCookiePairArray = LearnedCookie.split("=");
+      ReadCookiePairArray = LearnedCookieStr.split("=");
 
-      let LearnedCookie = ReadCookiePairArray[1];
+      let LearnedCookieStr = ReadCookiePairArray[1];
 
-      return LearnedCookie;
+      return LearnedCookieStr;
       
 
     }
@@ -337,7 +337,7 @@ function GetCookie(Check, Mode){
     }
     else if(Mode == "Learned"){
 
-      if(LearnedCookie != undefined){
+      if(LearnedCookieStr != undefined){
 
         return true;
 
