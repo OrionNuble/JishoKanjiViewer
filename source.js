@@ -586,6 +586,7 @@ function JumpToIndex(){
     FetchTheNextKanji();
 
     document.getElementById('Choose').value = "";
+    document.getElementById('GradeLevel').value = CurrentKanjiGrade.toString();
 
   }
 
