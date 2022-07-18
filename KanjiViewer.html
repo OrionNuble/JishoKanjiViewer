@@ -5,8 +5,6 @@
     <title>Jisho Kanji Viewer</title>
   </head>
   <body onload="HTMLOnloadFunctions()">
-    <button type="button" name="PreviousKanji" class="PrevButton", onclick="FetchThePreviousKanji()">Previous Kanji</button>
-    <button type="button" name="NextKanji" class="NextButton", onclick="FetchTheNextKanji()">Next Kanji</button>
     <label for="Grades" class="ChoseGradeLabel">Please Choose a Grade Level</label>
     <select id="GradeLevel" onchange="GetGradeLevel()">
       <option value="1">Grade One</option>
@@ -21,6 +19,8 @@
     <button type="button" id="JumpToInd" name="button", onclick="JumpToIndex()">Jump</button>
     <label for="CurrentIndex" id="CIndex">Kanji No: </label>
     <label for="CID" id="CurrentIndexView" value="..."></label>
+    <button type="button" name="PreviousKanji" class="PrevButton", onclick="FetchThePreviousKanji()">Previous Kanji</button>
+    <button type="button" name="NextKanji" class="NextButton", onclick="FetchTheNextKanji()">Next Kanji</button>
     <label for="BookmarkTest"> | Bookmark This Kanji </label>
     <input type="checkbox" name="Bookmark this Kanji" value="Bookmark" id="Bookmarked", onchange="ManageBookmarksLive()">
     <label for=""> |</label>
