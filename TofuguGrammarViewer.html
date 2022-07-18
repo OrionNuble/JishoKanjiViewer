@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Jisho Kanji Viewer</title>
+  </head>
+  <body onload="LoadBookmarkedKanjis()">
+    <button type="button" name="PreviousKanji" class="PrevButton", onclick="FetchThePreviousKanji()">Previous Kanji</button>
+    <button type="button" name="NextKanji" class="NextButton", onclick="FetchTheNextKanji()">Next Kanji</button>
+    <label for="Grades" class="ChoseGradeLabel">Please Choose a Grade Level</label>
+    <select id="GradeLevel" onchange="GetGradeLevel()">
+      <option value="One">Grade One</option>
+      <option value="Two">Grade Two</option>
+      <option value="Three">Grade Three</option>
+      <option value="Four">Grade Four</option>
+      <option value="Five">Grade Five</option>
+      <option value="Six">Grade Six</option>
+    </select>
+    <label for="JumpToIndex">Choose an Index to jump to</label>
+    <input type="text" name="ChooseIndex" value="" id="Choose">
+    <button type="button" id="JumpToInd" name="button", onclick="JumpToIndex()">Jump</button>
+    <label for="CurrentIndex" id="CIndex">Current Index: </label>
+    <label for="CID" id="CurrentIndexView" value="..."></label>
+    <label for="BookmarkTest"> | Bookmark This Kanji </label>
+    <input type="checkbox" name="Bookmark this Kanji" value="Bookmark" id="Bookmarked", onchange="ManageBookmarksLive()">
+    <label for=""> |</label>
+    <label for=""> | </label>
+    <select name="BookmarkGradeSelect" id="Grades" onchange="UpdateBookmarksList()">
+      <option value="1">Grade One Bookmarks</option>
+      <option value="2">Grade Two Bookmarks</option>
+      <option value="3">Grade Three Bookmarks</option>
+      <option value="4">Grade Four Bookmarks</option>
+      <option value="5">Grade Five Bookmarks</option>
+      <option value="6">Grade Six Bookmarks</option>
+    </select>
+    <select name="BookmarksKanjiSelect" id="Kanjis"></select>
+    <button id="Load bookmarks" onclick="BringForthBookmarkedKanji()">Load Bookmark</button>
+    <iframe src="..." frameborder = "0" allowfullscreen id="IFRAME" width="1920px" height="1080px"></iframe>
+    <script type="text/javascript" src="source.js"></script>
+    <link rel="stylesheet" type="text/css" href="source.css"/>
+  </body>
+</html>

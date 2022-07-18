@@ -1,0 +1,28 @@
+.NextButton{
+
+  background-color: black;
+  border: white;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  right: 100%;
+
+}
+
+.PrevButton{
+
+  background-color: black;
+  border: white;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  align: center;
+
+}
+
+.ChoseGradeLabel{
+
+  color: black;
+  align: center;
+
+}
