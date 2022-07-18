@@ -36,6 +36,17 @@
     <select name="BookmarksKanjiSelect" id="Kanjis"></select>
     <button id="Load bookmarks" onclick="BringForthBookmarkedKanji()">Load Bookmark</button>
     <button id="JapaneseWriting" onclick="JapaneseWriting()">日本語 Writing</button>
+    <label for="BookmarkTest"> | I Learned This Kanji </label>
+    <input type="checkbox" name="I learned this kanji" value="learn" id="Learned", onchange="ManageLearned()">
+    <select name="LearnedGradeSelect" id="LGrades" onchange="UpdateLearnedList()">
+      <option value="1">Grade One Learned</option>
+      <option value="2">Grade Two Learned</option>
+      <option value="3">Grade Three Learned</option>
+      <option value="4">Grade Four Learned</option>
+      <option value="5">Grade Five Learned</option>
+      <option value="6">Grade Six Learned</option>
+    </select>
+    <select name="LearnedKanjiSelect" id="LKanjis"></select>
     <iframe src="..." frameborder = "0" allowfullscreen id="IFRAME" width="1920px" height="1080px"></iframe>
     <script type="text/javascript" src="source.js"></script>
     <link rel="stylesheet" type="text/css" href="source.css"/>

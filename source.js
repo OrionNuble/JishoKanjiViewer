@@ -222,6 +222,23 @@ function SetCookie(Value, ExpiryInDays, Mode){
     document.cookie = defName + "=" + defValue + ExpiryDate;
 
   }
+  else if(Mode == "Learned"){
+
+    let defName = "Learned";
+    let defGrade = CurrentKanjiGrade.toString();
+    let defIndex = CurrentKanjiPageIndex.toString();
+
+    let defValue = defGrade + defIndex;
+
+    let DateObj = new Date();
+
+    DateObj.setTime(DateObj.getTime() + (ExpiryInDays * 24 * 60 * 60));
+
+    let ExpiryDate = "; expires=" + DateObj.toUTCString();
+
+    document.cookie = defName + "=" + defValue + ExpiryDate;
+
+  }
   else{
 
     console.error("Invalid SetCookie() Mode: Mode: " + Mode);
@@ -240,37 +257,42 @@ function GetCookie(Check, Mode){
 
   let BookmarksCookieIndex = CookieIndexThatStartsWith(CookiesArray, "B");
   let RememberenceCookieIndex = CookieIndexThatStartsWith(CookiesArray, "R");
+  let LearnedCookieIndex = CookieIndexThatStartsWith(CookiesArray, "L");
 
-  let ReadCookieArray = CookiesArray[BookmarksCookieIndex];
-  let RememberenceCookieArray = CookiesArray[RememberenceCookieIndex];
-
-  console.log("ReadCookieArray is actually a/an: " + typeof(ReadCookieArray));
-  console.log("RememberenceCookieArray is actually a/an: " + typeof(RememberenceCookieArray));
-
-  console.log("ReadCookieArray: " + ReadCookieArray);
-  console.log("RememberenceCookieArray: " + RememberenceCookieArray);
+  let BookmarksCookie = CookiesArray[BookmarksCookieIndex];
+  let RememberenceCookie = CookiesArray[RememberenceCookieIndex];
+  let LearnedCookie = CookiesArray[LearnedCookieIndex];
 
   let ReadCookie = "";
   let ReadCookiePairArray = [];
 
   if(!Check){
 
-
     if(Mode == "Bookmarks"){
 
-      ReadCookie = ReadCookieArray.split("=")[1];
+      ReadCookie = BookmarksCookie.split("=")[1];
 
       return ReadCookie;
 
     }
     else if(Mode == "WhereLeftOff"){
 
-      ReadCookiePairArray = RememberenceCookieArray.split("=");
+      ReadCookiePairArray = RememberenceCookie.split("=");
 
       let RememberedCookie = ReadCookiePairArray[1];
 
       return RememberedCookie;
   
+    }
+    else if(Mode == "Learned"){
+
+      ReadCookiePairArray = LearnedCookie.split("=");
+
+      let LearnedCookie = ReadCookiePairArray[1];
+
+      return LearnedCookie;
+      
+
     }
     else{
   
@@ -285,7 +307,7 @@ function GetCookie(Check, Mode){
 
     if(Mode == "Bookmarks"){
 
-      ReadCookie = ReadCookieArray.split("=")[0];
+      ReadCookie = BookmarksCookie.split("=")[0];
 
       if(ReadCookie == "0"){
 
@@ -301,7 +323,7 @@ function GetCookie(Check, Mode){
     }
     else if(Mode == "WhereLeftOff"){
 
-      if(RememberenceCookieArray != undefined){
+      if(RememberenceCookie != undefined){
 
         return true;
 
@@ -312,7 +334,20 @@ function GetCookie(Check, Mode){
 
       }
 
-  
+    }
+    else if(Mode == "Learned"){
+
+      if(LearnedCookie != undefined){
+
+        return true;
+
+      }
+      else{
+
+        return false;
+
+      }
+
     }
     else{
   
@@ -755,5 +790,187 @@ function JapaneseWriting(){
   document.getElementById('CIndex').innerHTML = " | Page Description: " + "日本語 Writing" + " | ";
 
   CurrentKanjiPageIndex--;
+
+}
+
+let LearnedKanjisGradeIndex = [];
+
+let GrandLearnedCookieString = "";
+
+function isInLearnedArray(){
+
+  for(let x = 0; x < LearnedKanjisGradeIndex.length; x++){
+
+    if(LearnedKanjisGradeIndex[x][0] == CurrentKanjiGrade){
+
+      if(LearnedKanjisGradeIndex[x][1] == CurrentKanjiPageIndex){
+
+        console.log("It does return true");
+
+        return true;
+
+      }
+
+    }
+
+  }
+
+  console.log("It does not return true");
+
+  return false;
+
+}
+
+function SetLearned(){
+
+  let CookieCheck = false;
+
+  if(!isInLearnedArray()){
+
+    CookieCheck = GetCookie(true, "Learned");
+
+    let NewCookieValue = CurrentKanjiGrade.toString() + CurrentKanjiPageIndex.toString().length.toString() + CurrentKanjiPageIndex.toString();
+
+    if(CookieCheck){
+
+      GrandLearnedCookieString = GetCookie(false, "Learned");
+
+      GrandLearnedCookieString += NewCookieValue;
+
+      SetCookie(GrandLearnedCookieString, 3650, "Learned");
+
+    }
+
+    else{
+
+      GrandLearnedCookieString += NewCookieValue;
+
+      SetCookie(GrandLearnedCookieString, 3650, "Learned");
+
+    }
+
+  }
+
+}
+
+function DeSetLearned(){
+
+  let LearnedKanjisEdited = [];
+
+  let CurrentKanjiDataPair = [CurrentKanjiGrade, CurrentKanjiPageIndex];
+
+  for(let p = 0; p < LearnedKanjisGradeIndex.length; p++){
+
+      if(LearnedKanjisGradeIndex[p][0] != CurrentKanjiDataPair[0] || BookmarkedKanjiGradeANDIndex[p][1] != CurrentKanjiDataPair[1]){
+
+        LearnedKanjisEdited.push(LearnedKanjisGradeIndex[p]);
+
+      }
+
+  }
+
+  LearnedKanjisGradeIndex = LearnedKanjisEdited;
+
+  GrandLearnedCookieString = DeparseArrayIntoCookieString();
+
+  SetCookie(GrandLearnedCookieString, 3650, "Bookmarks");
+
+}
+
+function LoadLearnedKanjis(){
+
+  let KanjiDataPair = [];
+  LearnedKanjisGradeIndex = [];
+
+  let ReadGrade = 0;
+  let ReadIndex = 0;
+
+  let CookieParsedData = [];
+
+  GrandLearnedCookieString = GetCookie(false, "Learned");
+
+  GrandLearnedCookieString = ParseCookieString(GrandLearnedCookieString);
+
+  for(let j = 0; j < CookieParsedData.length; j++){
+
+    ReadGrade = parseInt(CookieParsedData[j][0]);
+    ReadIndex = parseInt(CookieParsedData[j][1]);
+
+    KanjiDataPair.push(ReadGrade);
+    KanjiDataPair.push(ReadIndex);
+
+
+    LearnedKanjisGradeIndex.push(KanjiDataPair);
+    KanjiDataPair = [];
+
+  }
+
+  console.log(LearnedKanjisGradeIndex);
+
+}
+
+function UpdateLearnedList(){
+
+  let LearnedGradeValueStr = document.getElementById("LGrades").value;
+  let LearnedKanjiSelect = document.getElementById("LKanjis");
+
+  LearnedKanjiSelect.innerHTML = "";
+
+  let LearnedGradeValue = parseInt(LearnedGradeValueStr);
+
+  let KanjiOptions = [];
+
+  let SingleKanjiOption = "";
+
+  for(let ind = 0; ind < LearnedKanjisGradeIndex.length; ind++){
+
+    if(LearnedKanjisGradeIndex[ind][0] == LearnedGradeValue){
+
+      SingleKanjiOption += LearnedKanjisGradeIndex[ind][0].toString() + "," + LearnedKanjisGradeIndex[ind][1].toString();
+
+      KanjiOptions.push(SingleKanjiOption);
+      SingleKanjiOption = "";
+
+    }
+
+  }
+
+  for(let IND = 0; IND < KanjiOptions.length; IND++){
+
+    let OptionPair = KanjiOptions[IND].split(",");
+
+    let newBookmarkOption = document.createElement("option");
+
+    let OptionValue = "";
+
+    OptionValue = OptionPair[0] + OptionPair[1];
+
+    newBookmarkOption.value = OptionValue;
+    newBookmarkOption.innerHTML = FetchKanji(LearnedGradeValue, parseInt(OptionPair[1]));
+
+    BookmarkedKanjiSelect.options.add(newBookmarkOption);
+
+  }
+
+}
+
+function ManageLearned(){
+
+  let Check = document.getElementById('Learned').checked;
+
+  if(Check){
+
+    SetLearned();
+
+  }
+  else{
+
+    DeSetLearned();
+
+  }
+
+  LoadLearnedKanjis();
+
+  UpdateLearnedList();
 
 }
