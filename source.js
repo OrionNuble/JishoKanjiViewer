@@ -472,6 +472,17 @@ function FetchTheNextKanji(){
 
   else {
 
+    if(CurrentKanjiGrade + 1 < 7){
+
+      CurrentKanjiGrade++;
+
+    }
+    else{
+
+      CurrentKanjiGrade = 1;
+
+    }
+
     CurrentKanjiPageIndex = 0;
 
   }
@@ -506,6 +517,17 @@ function FetchThePreviousKanji(){
   }
 
   else {
+
+    if(CurrentKanjiGrade - 1 > 0){
+
+      CurrentKanjiGrade--;
+
+    }
+    else{
+
+      CurrentKanjiGrade = 6;
+
+    }
 
     CurrentKanjiPageIndex = AllJishoKanjiPages[CurrentKanjiGrade - 1].length - 1;
 
