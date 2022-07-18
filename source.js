@@ -633,16 +633,16 @@ function WriteBookmarkAsCookie() {
 
 }
 
-function DeparseArrayIntoCookieString(){
+function DeparseArrayIntoCookieString(Array){
 
   let SoonToBeGrandCookieString = "";
   let IndexStr = "";
 
-  for(let n = 0; n < BookmarkedKanjiGradeANDIndex.length; n++){
+  for(let n = 0; n < Array.length; n++){
 
-    SoonToBeGrandCookieString += BookmarkedKanjiGradeANDIndex[n][0].toString();
+    SoonToBeGrandCookieString += Array[n][0].toString();
 
-    IndexStr = BookmarkedKanjiGradeANDIndex[n][1].toString();
+    IndexStr = Array[n][1].toString();
 
     SoonToBeGrandCookieString += IndexStr.length;
 
@@ -689,7 +689,7 @@ function DeleteBookmark(){
 
   BookmarkedKanjiGradeANDIndex = BookmarkedKanjisEdited;
 
-  GrandCookieString = DeparseArrayIntoCookieString();
+  GrandCookieString = DeparseArrayIntoCookieString(BookmarkedKanjiGradeANDIndex);
 
   SetCookie(GrandCookieString, 3650, "Bookmarks");
 
@@ -871,9 +871,9 @@ function DeSetLearned(){
 
   LearnedKanjisGradeIndex = LearnedKanjisEdited;
 
-  GrandLearnedCookieString = DeparseArrayIntoCookieString();
+  GrandLearnedCookieString = DeparseArrayIntoCookieString(LearnedKanjisGradeIndex);
 
-  SetCookie(GrandLearnedCookieString, 3650, "Bookmarks");
+  SetCookie(GrandLearnedCookieString, 3650, "Learned");
 
 }
 
@@ -889,7 +889,7 @@ function LoadLearnedKanjis(){
 
   GrandLearnedCookieString = GetCookie(false, "Learned");
 
-  GrandLearnedCookieString = ParseCookieString(GrandLearnedCookieString);
+  CookieParsedData = ParseCookieString(GrandLearnedCookieString);
 
   for(let j = 0; j < CookieParsedData.length; j++){
 
