@@ -768,6 +768,26 @@ function BringForthBookmarkedKanji(){
 
 }
 
+function BringForthLearnedKanji(){
+
+  let ReadOptionValue = "";
+
+  let LearnedKanjiSelect = document.getElementById("LKanjis");
+
+  ReadOptionValue = LearnedKanjiSelect.value;
+
+  CurrentLearnedKanjiGrade = ReadOptionValue[0];
+  ReadOptionValue = ReadOptionValue.substring(1);
+
+  CurrentLearnedKanjiPageIndex = parseInt(ReadOptionValue);
+
+  CurrentKanjiGrade = CurrentLearnedKanjiGrade;
+  CurrentKanjiPageIndex = CurrentLearnedKanjiPageIndex - 1;
+
+  FetchTheNextKanji();
+
+}
+
 function HTMLOnloadFunctions(){
 
   LoadInitialPage();
@@ -781,13 +801,23 @@ function HTMLOnloadFunctions(){
 }
 
 let JapaneseWritingPageURL = "https://www.lexilogos.com/keyboard/japanese.php";
-let DeepLTranslatorPageURL = "https://www.deepl.com/translator";
+let JapaneseGrammarPageURL = "https://www.tofugu.com/japanese-grammar/tai-form/";
 
 function JapaneseWriting(){
 
   document.getElementById("IFRAME").src = JapaneseWritingPageURL;
 
   document.getElementById('CIndex').innerHTML = " | Page Description: " + "日本語 Writing" + " | ";
+
+  CurrentKanjiPageIndex--;
+
+}
+
+function JapaneseGrammar(){
+
+  document.getElementById("IFRAME").src = JapaneseGrammarPageURL;
+
+  document.getElementById('CIndex').innerHTML = " | Page Description: " + "日本語 Grammar" + " | ";
 
   CurrentKanjiPageIndex--;
 
