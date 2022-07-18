@@ -56,6 +56,12 @@ let GradeSix_Three = ""; // 0 (Reserved)
 let Grade6Kanjis = GradeSix_One + GradeSix_Two + GradeSix_Three;
 
 
+let GrammarPages = ["verb-past-ta-form", "verb-negative-nai-form", "te-form", "verb-continuous-form-teiru",
+                     "verb-sou", "tai-form", "tagaru-form", "verb-nagara", "verb-imperative-form-nasai",
+                      "verb-command-form-ro", "yasui", "nikui", "verb-causative-form-saseru", "verb-conditional-form-ba", "verb-potential-form-reru",
+                       "verb-passive-form-rareru", "verb-volitional-form-you"];
+
+
 for (let i = 0; i < Grade1Kanjis.length; i++){
 
 
@@ -105,6 +111,8 @@ AllJishoKanjiPages.push(GradeFourKanjiPages);
 AllJishoKanjiPages.push(GradeFiveKanjiPages);
 AllJishoKanjiPages.push(GradeSixKanjiPages);
 
+let KanjiOrGrammar = "";
+
 function hasDuplicate(Array){
 
   let ControlElement = "";
@@ -146,8 +154,10 @@ DupIndex = hasDuplicate(GradeFourKanjiPages);
 console.log("Total Number of Kanjis: " + AllKanjiCount);
 
 let KanjiPageBeginning = "https://jisho.org/search/";
+let GrammarPageBeginning = "https://www.tofugu.com/japanese-grammar/";
 
 let KanjiPageEnding = "%20%23kanji";
+let GrammarPageEnding = "/";
 
 let CurrentKanjiPageIndex = 0;
 let CurrentKanjiGrade = 1;
@@ -155,7 +165,10 @@ let CurrentKanjiGrade = 1;
 let CurrentBookmarkedKanjiPageIndex = 0;
 let CurrentBookmarkedKanjiGrade = 1;
 
+let CurrentGrammarPageIndex = 0;
+
 let CurrentKanji = "";
+let CurrentPage = "";
 
 let PrintIndexString = "";
 
@@ -392,7 +405,62 @@ function isInBookmarksArray() {
 
 }
 
+function FetchNextGrammarPage(){
+
+  if (CurrentGrammarPageIndex + 1 < GrammarPages.length){
+
+    CurrentGrammarPageIndex++;
+
+  }
+
+  else {
+
+    CurrentGrammarPageIndex = 0;
+
+  }
+
+  CurrentPage = GrammarPageBeginning + GrammarPages[CurrentGrammarPageIndex] + GrammarPageEnding;
+
+  document.getElementById("IFRAME").src = CurrentPage;
+
+  PrintIndexString = CurrentGrammarPageIndex + 1;
+  document.getElementById('CIndex').innerHTML = "Grammar Page No: " + PrintIndexString.toString();
+
+}
+
+function FetchPreviousGrammarPage(){
+
+  if (CurrentGrammarPageIndex - 1 >= 0){
+
+    CurrentGrammarPageIndex--;
+
+  }
+
+  else {
+
+    CurrentGrammarPageIndex = GrammarPages.length - 1;
+
+  }
+
+  CurrentPage = GrammarPageBeginning + GrammarPages[CurrentGrammarPageIndex] + GrammarPageEnding;
+
+  document.getElementById("IFRAME").src = CurrentPage;
+
+  PrintIndexString = CurrentGrammarPageIndex + 1;
+  document.getElementById('CIndex').innerHTML = "Grammar Page No: " + PrintIndexString.toString();
+  document.getElementById('Bookmarked').checked = isInBookmarksArray();
+
+}
+
 function FetchTheNextKanji(){
+
+  if(KanjiOrGrammar == "Grammar"){
+
+    FetchNextGrammarPage();
+
+    return;
+
+  }
 
   if (CurrentKanjiPageIndex + 1 < AllJishoKanjiPages[CurrentKanjiGrade - 1].length){
 
@@ -419,6 +487,14 @@ function FetchTheNextKanji(){
 }
 
 function FetchThePreviousKanji(){
+
+  if(KanjiOrGrammar == "Grammar"){
+
+    FetchPreviousGrammarPage();
+
+    return;
+
+  }
 
   if (CurrentKanjiPageIndex - 1 >= 0){
 
@@ -466,6 +542,14 @@ function isInRangeInc(Num, Min, Max){
 function JumpToIndex(){
 
   let ChosenIndexString = document.getElementById('Choose').value;
+
+  if(KanjiOrGrammar == "Grammar"){
+
+    ChosenIndexString = "1";
+
+    KanjiOrGrammar = "Kanji";
+
+  }
 
   let ChosenIndex = parseInt(ChosenIndexString);
 
@@ -803,7 +887,7 @@ function JapaneseWriting(){
 
 function JapaneseGrammar(){
 
-  document.getElementById("IFRAME").src = JapaneseGrammarPageURL;
+  KanjiOrGrammar = "Grammar";
 
   document.getElementById('CIndex').innerHTML = " | Page Description: " + "日本語 Grammar" + " | ";
 
