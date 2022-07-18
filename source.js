@@ -542,6 +542,7 @@ function FetchThePreviousKanji(){
   document.getElementById('CGrade').innerHTML = "Grade No: " + CurrentKanjiGrade.toString() + "/6";
   document.getElementById('CIndex').innerHTML = "Kanji No: " + PrintIndexString.toString() + "/" + AllJishoKanjiPages[CurrentKanjiGrade - 1].length;
   document.getElementById('GradeLevel').value = CurrentKanjiGrade.toString();
+  console.log("Current Kanji Grade: " + CurrentKanjiGrade.toString());
   document.getElementById('Bookmarked').checked = isInBookmarksArray();
 
 }
@@ -549,7 +550,6 @@ function FetchThePreviousKanji(){
 function GetGradeLevel(){
 
   let GradeSelect = document.getElementById('GradeLevel');
-  let SelectedGradeText = parseInt(GradeSelect.value);
 
   CurrentKanjiGrade = parseInt(GradeSelect.value);
 
