@@ -424,7 +424,7 @@ function FetchNextGrammarPage(){
   document.getElementById("IFRAME").src = CurrentPage;
 
   PrintIndexString = CurrentGrammarPageIndex + 1;
-  document.getElementById('CGrade').innerHTML = "" + CurrentKanjiGrade.toString();
+  document.getElementById('CGrade').innerHTML = "" + CurrentKanjiGrade.toString() + "/6";
   document.getElementById('CIndex').innerHTML = "Grammar Page No: " + PrintIndexString.toString();
 
 }
@@ -492,8 +492,8 @@ function FetchTheNextKanji(){
   document.getElementById("IFRAME").src = CurrentKanji;
 
   PrintIndexString = CurrentKanjiPageIndex + 1;
-  document.getElementById('CGrade').innerHTML = "Grade No: " + CurrentKanjiGrade.toString();
-  document.getElementById('CIndex').innerHTML = "Kanji No: " + PrintIndexString.toString();
+  document.getElementById('CGrade').innerHTML = "Grade No: " + CurrentKanjiGrade.toString() + "/6";
+  document.getElementById('CIndex').innerHTML = "Kanji No: " + PrintIndexString.toString() + "/" + AllJishoKanjiPages[CurrentKanjiGrade - 1].length;
   document.getElementById('Bookmarked').checked = isInBookmarksArray();
 
   SetCookie("0", 3650, "WhereLeftOff");
@@ -538,8 +538,8 @@ function FetchThePreviousKanji(){
   document.getElementById("IFRAME").src = CurrentKanji;
 
   PrintIndexString = CurrentKanjiPageIndex + 1;
-  document.getElementById('CGrade').innerHTML = "Grade No: " + CurrentKanjiGrade.toString();
-  document.getElementById('CIndex').innerHTML = "Kanji No: " + PrintIndexString.toString();
+  document.getElementById('CGrade').innerHTML = "Grade No: " + CurrentKanjiGrade.toString() + "/6";
+  document.getElementById('CIndex').innerHTML = "Kanji No: " + PrintIndexString.toString() + "/" + AllJishoKanjiPages[CurrentKanjiGrade - 1].length;
   document.getElementById('Bookmarked').checked = isInBookmarksArray();
 
 }
@@ -644,8 +644,8 @@ function LoadInitialPage(){
 
   document.getElementById("IFRAME").src = CurrentKanji;
 
-  document.getElementById('CGrade').innerHTML = " | Grade No: " + CurrentKanjiGrade.toString() + " | ";
-  document.getElementById('CIndex').innerHTML = " | Kanji No: " + PrintIndexString.toString() + " | ";
+  document.getElementById('CGrade').innerHTML = " | Grade No: " + CurrentKanjiGrade.toString() + "/6" + " | ";
+  document.getElementById('CIndex').innerHTML = " | Kanji No: " + PrintIndexString.toString() + "/" + AllJishoKanjiPages[CurrentKanjiGrade - 1].length + " | ";
 
   document.getElementById("GradeLevel").value = CurrentKanjiGrade.toString();
 
