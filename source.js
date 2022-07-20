@@ -930,3 +930,34 @@ function JapaneseGrammar(){
   FetchTheNextKanji();
 
 }
+
+function FindKanji(){
+
+  let KanjiInput = document.getElementById("FindKanji");
+
+  let KanjiToFind = KanjiInput.value;
+
+  for(let i = 0; i < AllJishoKanjiPages.length; i++){
+
+    for(let j = 0; j < AllJishoKanjiPages[i].length; j++){
+
+      if(KanjiToFind == AllJishoKanjiPages[i][j]){
+
+        document.getElementById("Choose").value = (j + 1).toString();
+        document.getElementById("GradeLevel").value = (i + 1).toString();
+        GetGradeLevel();
+        JumpToIndex();
+
+        return;
+
+      }
+
+    }
+
+  }
+
+  alert("The Kanji you have entered couldn't be found.");
+
+  return;
+
+}
