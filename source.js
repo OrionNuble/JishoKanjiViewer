@@ -947,7 +947,8 @@ function FindKanji(){
         document.getElementById("GradeLevel").value = (i + 1).toString();
         GetGradeLevel();
         JumpToIndex();
-
+        document.getElementById("FindKanji").value = "";
+        
         return;
 
       }
