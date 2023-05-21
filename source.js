@@ -156,8 +156,8 @@ console.log("Total Number of Kanjis: " + AllKanjiCount);
 let KanjiPageBeginning = "https://jisho.org/search/";
 let GrammarPageBeginning = "https://www.tofugu.com/japanese-grammar/";
 
-//let KanjiPageEnding = "%20%23kanji";
-let KanjiPageEnding = "";
+let KanjiPageEnding = "%20%23kanji";
+//let KanjiPageEnding = "";
 let GrammarPageEnding = "/";
 
 let CurrentKanjiPageIndex = 0;
